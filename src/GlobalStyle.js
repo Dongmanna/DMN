@@ -27,7 +27,7 @@ const GlobalStyle= createGlobalStyle`
         --gray1:#A1A1A1;
     }
     html{
-        font-size:14;
+        font-size:10px;
     }
 `;
 
