@@ -3,6 +3,8 @@ import ButtonGray from "./components/ButtonGray";
 import ButtonGreen from "./components/ButtonGreen";
 import ButtonGreenA from "./components/ButtonGreenA";
 import ButtonWhite from "./components/ButtonWhite";
+import Card from "./components/Card";
+import Input from "./components/Input";
 import SearchBar from "./components/SearchBar";
 import SearchBarResult from "./components/SearchBarResult";
 
@@ -31,6 +33,13 @@ function App() {
       <br /><br />
       ButtonChat
       <ButtonChat>채팅방 입장</ButtonChat>
+      <br /><br />
+      Card
+      <Card  hot={true} img="img" item="스니커스니커스니커스니커스니커스니커스니커스니커즈" num="3/4" category="배달" key="1">제목이 들어갈 구역입니다.제목이 들어갈 구역입니다.제목이 들어갈 구역입니다.제목이 들어갈 구역입니다.제목이 들어갈 구역입니다.제목이 들어갈 구역입니다.</Card>
+      Input
+      <Input size="" placeholder="지역" required={true} />
+      <br />
+      <Input size="L" placeholder="링크" required={false} />
     </div>
   );
 }
