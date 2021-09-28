@@ -14,7 +14,7 @@ const GlobalStyle= createGlobalStyle`
      font-style: normal;
 }
     *{
-        box-sizing:border-box
+        box-sizing:border-box;
     }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
@@ -27,7 +27,7 @@ const GlobalStyle= createGlobalStyle`
         --gray1:#A1A1A1;
     }
     html{
-        font-size:14;
+        font-size:10px;
     }
 `;
 
