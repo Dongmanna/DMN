@@ -23,7 +23,6 @@ export default function ButtonGreen({children}) {
     return (
         <ButtonGreenStyle>
             {children}
-
         </ButtonGreenStyle>
     )
 }
