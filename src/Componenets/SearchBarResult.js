@@ -9,7 +9,7 @@ align-items: center;
         margin-left:2rem;
         width: 643px;
         height: 77px;
-        border:solid 3px;
+        border:solid 2px;
         border-radius: 3px;
         background-color: transparent;
         font-size: 2rem;
@@ -43,19 +43,22 @@ align-items: center;
     }
         }
     `
-export default function SearchBarResult() {
+export default function SearchBarResult({searchText, setSearchText}) {
+    const [inputText, setInputText] = useState("")
     
     //데이터 결과창에 넘겨줄 때 searchtext사용
-    const [searchText, setsearchText] = useState("");
 
     const handleSearch = (e) => {
         e.preventDefault();
-        setsearchText(e.target.value);
+        setInputText(e.target.value);
+    }
+    const onclick= ()=>{
+        setSearchText(inputText)
     }
     return (
         <SearchBarResultStyle>
             <img src={searchIconBlack}alt="검색" />
-            <input type="text" placeholder="검색어를 입력해주세요" value={searchText} onChange={handleSearch}/>
+            <input type="text" placeholder="검색어를 입력해주세요" value={inputText} onChange={handleSearch}/>
             <button type="submit" onClick={onclick}>검색</button>
         </SearchBarResultStyle>
     )

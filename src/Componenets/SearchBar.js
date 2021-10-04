@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router';
 import styled from 'styled-components'
 import searchIcon from '../img/searchIcon.svg'
 
@@ -81,7 +82,7 @@ const SearchBarStyle = styled.div`
 `
 
 
-export default function SearchBar({size, onclick}) {
+function SearchBar({size, onclick}) {
 
     //데이터 결과창에 넘겨줄 때 searchtext사용
     const [searchText, setsearchText] = useState("");
@@ -99,4 +100,6 @@ export default function SearchBar({size, onclick}) {
             <button type="submit" onClick={onclick}><img src={searchIcon} alt="검색" /></button>
         </SearchBarStyle>
     )
-}
+};
+
+export default withRouter(SearchBar);

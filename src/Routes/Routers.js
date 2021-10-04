@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { HashRouter as Router, Switch, Route} from "react-router-dom";
-import Chatting from "../Routes/Chatting";
-import Detail from "../Routes/Detail";
-import Edit from "../Routes/Edit";
-import Home from "../Routes/Home";
-import Login from "../Routes/Login";
-import Mypage from "../Routes/Mypage";
-import Result from "../Routes/Result";
-import Write from "../Routes/Write";
+import Chatting from "./Chatting";
+import Detail from "./Detail";
+import Edit from "./Edit";
+import Home from "./Home";
+import Login from "./Login";
+import Mypage from "./Mypage";
+import Result from "./Result";
+import Write from "./Write";
 
 
 
