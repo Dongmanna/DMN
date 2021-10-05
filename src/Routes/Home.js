@@ -7,7 +7,7 @@ import Content from "../data";
 import SearchBar from '../Componenets/SearchBar';
 import styled from "styled-components";
 
-const HomeStyle=styled.main`
+const HomeStyle = styled.main`
     .search-box{
         height:75vh;
         display:flex;
@@ -66,18 +66,17 @@ const Home = () => {
         <HomeStyle>
             <Header />
             <main>
-                
-                    <div className="search-box">
-                        {/* <Ani/> */}
-                        <SearchBar/>
-                        
-                    </div>
-                
+
+                <div className="search-box">
+                    {/* <Ani/> */}
+                    <SearchBar />
+
+                </div>
+
                 <div className="maincss">
                 </div>
-                <MainCategory phrase="이런 글은 어떠세요?" content={Content}/>
+                        <MainCategory phrase="이런 글은 어떠세요?" content={Content} />
                 <div className="card-cate">
-                    
                     <Router>
                         <Link to="/Detail">
                             <button>Card - Detail</button>
