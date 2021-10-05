@@ -23,14 +23,18 @@ const CardStyle=styled.div`
     .card{
         background-color: var(--bg-gray);
         width: 100%;
-        height: 160px;
+        height: 66%;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         position:absolute;
         top:11px;
         left:0;
         display:flex;
         :hover{
-            box-shadow: 4px 4px 4px 0 var(--gray1) ;
+            /* box-shadow: 4px 4px 4px 0 var(--gray1) ; */
+            transform: translate(-0.4rem,-0.4rem);
+            width:102%;
+            height:68%;
+            transition:.1s;
 
         }
     }
@@ -93,9 +97,9 @@ const CardStyle=styled.div`
         position:absolute;
         right:10px;
         bottom:10px;
-        height:3rem;
-        width:3rem;
-        line-height:3rem;
+        height:4rem;
+        width:4rem;
+        line-height:4rem;
         font-weight:600;
     }
 

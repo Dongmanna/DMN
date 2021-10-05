@@ -57,30 +57,25 @@ const Ani = () => {
                 </div>
             </div>
         </>
+
     )
 }
 
-const Home = ({history}) => {
-    // const searchClick=(e)=>{
-    //     history.push('/Result');
-    // }
-    console.log(history);
+const Home = () => {
     return (
         <HomeStyle>
             <Header />
             <main>
-                <Router>
+                
                     <div className="search-box">
-                        <SearchBar onclick=""/>
-                        <Link to="/Result">
-                            <button>검색</button>
-                        </Link>
+                        {/* <Ani/> */}
+                        <SearchBar/>
+                        
                     </div>
-                </Router>
+                
                 <div className="maincss">
-                    {/* <Ani /> */}
                 </div>
-                <MainCategory phrase="이 글은 어떠세요?" content={Content}/>
+                <MainCategory phrase="이런 글은 어떠세요?" content={Content}/>
                 <div className="card-cate">
                     
                     <Router>

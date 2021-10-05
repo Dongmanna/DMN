@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import Header from "../Componenets/Header";
 import Content from "../data";
 import styled from "styled-components";
 import MainCategory from "../Componenets/MainCategory";
 import SearchBarResult from "../Componenets/SearchBarResult";
+import queryString from'query-string';
+
 
 const ResultStyle=styled.div`
 
@@ -15,10 +18,10 @@ const ResultStyle=styled.div`
     margin-bottom: 10rem;
 }
 `
-const Result = () => {
-    const [searchText, setsearchText] = useState("");
+const Result = ({location}) => {
+    const word = location.word; //여기서부터 다시
+    const [searchText, setsearchText] = useState(word); //여기 word는 고치고
     const [resultData,setResultData]=useState(Content);
-    console.log(resultData);
 
     useEffect(()=>{
         setResultData(()=> Content.filter((post) => post.title.match(searchText)));
@@ -42,4 +45,4 @@ const Result = () => {
     )
 }
 
-export default Result;
+export default withRouter(Result);

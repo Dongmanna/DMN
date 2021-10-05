@@ -47,7 +47,7 @@ function Routers() {
                     <Route exact path="/Mypage">
                         <Mypage />
                     </Route>
-                    <Route exact path="/Result">
+                    <Route  path="/Result">
                         <Result />
                     </Route>
                     <Route exact path="/Write">

@@ -48,7 +48,7 @@ const SelectorStyle = styled.p`
 `
 
 export default function MainCategory( {phrase, content}) {
-    const [category, setcategory] = useState("전체");
+    const [category, setcategory] = useState("");
     const [contentData, setContentData] = useState(content);
     useEffect(()=>{
         setContentData(content)
@@ -56,7 +56,7 @@ export default function MainCategory( {phrase, content}) {
 
 
     useEffect(() => {
-        if (category === '전체') return;
+        if (category === '') return;
         setContentData(() =>
           content.filter((post) =>
             post.category.match(category)

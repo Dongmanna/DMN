@@ -10,6 +10,7 @@ const Content = [
         participants:["user1","user2",],
         category:"배달",
     },
+    
     {
         img:"./img/searchIcon.svg",
         id:2,
