@@ -52,11 +52,13 @@ const SearchBarStyle = styled.form`
     
     ${(props) =>
     props.size==="S" &&`          
-        
     border: solid var(--grn-1,green) 3px;
     width:320px;
     height:40px;
     padding-left:2rem;
+    position: absolute;
+    left:715px;
+    top:32px;
 
     .after{
             height:1.5rem;
@@ -77,6 +79,7 @@ const SearchBarStyle = styled.form`
     button{
         height:2rem;
     }
+
     `}
 
 `

@@ -9,6 +9,7 @@ import SearchBarResult from "../Componenets/SearchBarResult";
 import queryString from'query-string';
 
 
+
 const ResultStyle=styled.div`
 
 .search-box{
