@@ -163,16 +163,7 @@ svg text:nth-child(15){
     }
 }
 
-.line{
-    position: absolute;
-    width: 1185px;
-    height: 0px;
-    left: 133px;
-    top:68vh;
-    /* top: 644.7px; */
-    border: 8px solid #9BBA74;
-    transform: rotate(0.13deg);
-}
+
 .card-cate{
     position:absolute;
     width:1000px;

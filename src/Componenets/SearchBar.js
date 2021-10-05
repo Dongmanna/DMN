@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import searchIcon from '../img/searchIcon.svg'
 
-const SearchBarStyle = styled.div`
+const SearchBarStyle = styled.form`
     border: solid var(--grn-1,green) 6px;
     border-radius:40px;
     width:750px;
@@ -81,7 +82,7 @@ const SearchBarStyle = styled.div`
 `
 
 
-export default function SearchBar({size, onclick}) {
+function SearchBar({size, onclick, }) {
 
     //데이터 결과창에 넘겨줄 때 searchtext사용
     const [searchText, setsearchText] = useState("");
@@ -96,7 +97,9 @@ export default function SearchBar({size, onclick}) {
         <SearchBarStyle size={size}>
             <input type="text" placeholder="검색어를 입력해주세요" value={searchText} onChange={handleSearch}/>
             <div className="after"></div>
-            <button type="submit" onClick={onclick}><img src={searchIcon} alt="검색" /></button>
+            <Link to= {{pathname:"/Result",word:searchText}} ><button type="submit" onClick={onclick}><img src={searchIcon} alt="검색" /></button></Link>
         </SearchBarStyle>
     )
-}
+};
+
+export default SearchBar;

@@ -1,8 +1,14 @@
 import React from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
+import styled from "styled-components";
 
+const HeaderStyle = styled.div`
+    height:7vh;
+    background-color: var(--grn-1);
+`
 const Header = () => {
     return (
+        <HeaderStyle>
         <Router>
             <div>
                 <Link to = "/">로고이미지</Link>
@@ -12,6 +18,7 @@ const Header = () => {
             </div>
 
         </Router>
+        </HeaderStyle>
     );
 };
 

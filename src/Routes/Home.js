@@ -1,7 +1,20 @@
 import React from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import Header from "../Componenets/Header";
+import MainCategory from "../Componenets/MainCategory";
 import "../css/Home.css"
+import Content from "../data";
+import SearchBar from '../Componenets/SearchBar';
+import styled from "styled-components";
+
+const HomeStyle=styled.main`
+    .search-box{
+        height:75vh;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+`
 
 
 const Ani = () => {
@@ -44,42 +57,27 @@ const Ani = () => {
                 </div>
             </div>
         </>
+
     )
 }
 
 const Home = () => {
     return (
-        <>
+        <HomeStyle>
             <Header />
-            <h1>Home</h1>
             <main>
-                <Router>
-                    <form >
-                        <input type="text"></input>
-                        <Link to="/Result">
-                            <button>검색</button>
-                        </Link>
-                    </form>
-                </Router>
-                <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                
+                    <div className="search-box">
+                        {/* <Ani/> */}
+                        <SearchBar/>
+                        
+                    </div>
+                
                 <div className="maincss">
-                    <div className="line"></div>
-                    <Ani />
                 </div>
+                <MainCategory phrase="이런 글은 어떠세요?" content={Content}/>
                 <div className="card-cate">
-                    <button>
-                        전체
-                    </button>
-                    <button>
-                        온라인
-                    </button>
-                    <button>
-                        오프라인
-                    </button>
-                    <button>
-                        배달
-                    </button>
-
+                    
                     <Router>
                         <Link to="/Detail">
                             <button>Card - Detail</button>
@@ -88,7 +86,7 @@ const Home = () => {
                 </div>
             </main>
 
-        </>
+        </HomeStyle>
 
     )
 }

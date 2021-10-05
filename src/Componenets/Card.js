@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import searchIconBlack from '../img/searchIconBlack.svg'
 
 
 const CardStyle=styled.div`
-    width:339px;
+    width:30%;
+    margin-right:3%;
     height:240px;
     background-color:#fff;
     position:relative;
@@ -22,15 +22,19 @@ const CardStyle=styled.div`
     }
     .card{
         background-color: var(--bg-gray);
-        width: 335px;
-        height: 160px;
+        width: 100%;
+        height: 66%;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         position:absolute;
         top:11px;
         left:0;
         display:flex;
         :hover{
-            box-shadow: 4px 4px 4px 0 var(--gray1) ;
+            /* box-shadow: 4px 4px 4px 0 var(--gray1) ; */
+            transform: translate(-0.4rem,-0.4rem);
+            width:102%;
+            height:68%;
+            transition:.1s;
 
         }
     }
@@ -93,9 +97,9 @@ const CardStyle=styled.div`
         position:absolute;
         right:10px;
         bottom:10px;
-        height:3rem;
-        width:3rem;
-        line-height:3rem;
+        height:4rem;
+        width:4rem;
+        line-height:4rem;
         font-weight:600;
     }
 
@@ -105,8 +109,7 @@ export default function Card({children, hot, img, item, num, category} ) {
         <CardStyle>
             {hot?<div className="red-sign">마감임박</div>:"" }
             <div className="card">
-                <img src={searchIconBlack} alt="사진" />
-                {/* <img src={img} alt="사진" /> 실제 사용시 이걸로 교체*/ }
+                <img src={img} alt="사진" /> 
 
                 <div className="container">
                     <p>{item}</p> 
