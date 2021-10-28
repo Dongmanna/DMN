@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import searchIcon from '../img/searchIcon.svg'
+import { withRouter } from "react-router";
+
 
 const SearchBarStyle = styled.form`
     border: solid var(--grn-1,green) 6px;
@@ -59,7 +61,6 @@ const SearchBarStyle = styled.form`
     position: absolute;
     left:715px;
     top:32px;
-
     .after{
             height:1.5rem;
             border-right:solid var(--grn-1) 0.18rem;
@@ -70,7 +71,7 @@ const SearchBarStyle = styled.form`
         width:24rem;
         height:1.5rem;
         background-color: transparent;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         border:none;
         }
     img{
@@ -94,7 +95,7 @@ function SearchBar({size, onclick, }) {
         setsearchText(e.target.value);
     }
     
-    
+    console.log(searchText);
 
     return (
         <SearchBarStyle size={size}>
@@ -105,4 +106,4 @@ function SearchBar({size, onclick, }) {
     )
 };
 
-export default SearchBar;
+export default withRouter(SearchBar);

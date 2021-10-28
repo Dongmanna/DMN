@@ -47,7 +47,6 @@ const SelectorStyle = styled.p`
     
 `
 
-const SLink = styled(Link)``;
 
 export default function MainCategory({ phrase, content }) {
     const [category, setcategory] = useState("");
@@ -58,7 +57,6 @@ export default function MainCategory({ phrase, content }) {
 
 
     useEffect(() => {
-        if (category === '') return;
         setContentData(() =>
             content.filter((post) =>
                 post.category.match(category)

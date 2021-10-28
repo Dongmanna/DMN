@@ -6,7 +6,6 @@ import Content from "../data";
 import styled from "styled-components";
 import MainCategory from "../Componenets/MainCategory";
 import SearchBarResult from "../Componenets/SearchBarResult";
-import queryString from'query-string';
 
 
 
@@ -28,7 +27,7 @@ const Result = ({location}) => {
         setResultData(()=> Content.filter((post) => post.title.match(searchText)));
     },[searchText]);
 
-    
+    console.log(word);
     return (
         <ResultStyle>
             <Header />
@@ -36,7 +35,7 @@ const Result = ({location}) => {
                 <SearchBarResult searchText={searchText} setSearchText={setsearchText}/>
             </div>
             
-            <MainCategory phrase={ '"'+searchText +'"'+"에 대한 검색 결과입니다."} content={resultData}/>
+            <MainCategory phrase={ searchText? '"'+searchText  +'"에 대한 검색 결과입니다.':"검색어를 입력해주세요."} content={resultData}/>
             <Router>
                 <Link to="/Detail">
                     <button>Card - Detail</button>
