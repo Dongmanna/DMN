@@ -65,6 +65,8 @@ const Home = () => {
     return (
         <HomeStyle>
             <Header />
+            <Link to="/Login"> 로그인</Link>
+
             <main>
 
                 <div className="search-box">

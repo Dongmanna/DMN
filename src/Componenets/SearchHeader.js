@@ -70,7 +70,7 @@ const SearchHeader = () => {
         <Router>
             <div>
                 <div className="Headersearchbar">
-                    <SearchBar size="S" />
+                    <SLink to="/Result"><SearchBar size="S" /></SLink>
                 </div>
                 <HeaderStyle>
                     <div className="Header_L">

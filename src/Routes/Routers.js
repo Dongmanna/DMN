@@ -8,6 +8,7 @@ import Login from "./Login";
 import Mypage from "./Mypage";
 import Result from "./Result";
 import Write from "./Write";
+import SignUp from "./SignUp"
 
 
 
@@ -44,7 +45,7 @@ function Routers() {
                     <Route exact path="/Login">
                         <Login />
                     </Route>
-                    <Route exact path="/Mypage">
+                    <Route path="/Mypage">
                         <Mypage />
                     </Route>
                     <Route  path="/Result">
@@ -52,6 +53,9 @@ function Routers() {
                     </Route>
                     <Route exact path="/Write">
                         <Write />
+                    </Route>
+                    <Route exact path="/SignUp">
+                        <SignUp />
                     </Route>
                 </>
             </Switch>
