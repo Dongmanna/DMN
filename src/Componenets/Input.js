@@ -3,17 +3,19 @@ import styled from 'styled-components'
 
 const InputStyle = styled.input`
     
-        width: 190px;
-        height: 34px;
+        width: 15vw;
+        height: 3rem;
         border:solid 2px var(--grn-1);
         background-color: transparent;
         font-size: 1.8rem;
         ::placeholder{
-            color:var(--gray1);
+            color:black;
         }
 
         :focus{
             outline-width:0;
+            border:solid 3px var(--grn-1);
+
         }
 
         :focus::placeholder{
@@ -21,7 +23,7 @@ const InputStyle = styled.input`
         }
     
     ${(props)=> props.size==="L" &&`
-        width:334px;
+        width:22vw;
         border:solid 1px var(--grn-1);
 
     `}
