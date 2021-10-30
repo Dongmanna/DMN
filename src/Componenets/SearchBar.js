@@ -68,7 +68,7 @@ const SearchBarStyle = styled.form`
 
     input{
         width:24rem;
-        height:1.5rem;
+        height:1.7rem;
         background-color: transparent;
         font-size: 1.5rem;
         border:none;

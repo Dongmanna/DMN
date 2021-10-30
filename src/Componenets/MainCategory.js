@@ -15,8 +15,6 @@ max-height:200vh;
     margin-bottom:4rem;
     font-weight:600;
     font-family: 'Poppins';
-
-
 }
 .card-container{
     display:flex;
@@ -44,7 +42,6 @@ const SelectorStyle = styled.p`
         color:${(props) => props.c === props.category ? "var(--grn-1)" : "black"};
         border-bottom:${(props) => props.c === props.category ? "var(--grn-1)" : "transparent"} solid 0.3rem;
         transition:.3s;
-    
 `
 
 const SLink = styled(Link)``;
@@ -74,7 +71,6 @@ export default function MainCategory({ phrase, content }) {
                 <SelectorStyle category={category} c={"오프라인"} onClick={() => setcategory("오프라인")}>오프라인</SelectorStyle>
                 <SelectorStyle category={category} c={"온라인"} onClick={() => setcategory("온라인")}>온라인</SelectorStyle>
                 <SelectorStyle category={category} c={"배달"} onClick={() => setcategory("배달")}>배달</SelectorStyle>
-
             </div>
             <div className="card-container">
                         {contentData.map((post) => (
@@ -91,8 +87,6 @@ export default function MainCategory({ phrase, content }) {
                         )
                         )}
             </div>
-
-
         </MainCategoryStyle >
     )
 }

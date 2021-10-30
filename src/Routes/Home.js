@@ -70,9 +70,7 @@ const Home = () => {
                 <div className="search-box">
                     {/* <Ani/> */}
                     <SearchBar />
-
                 </div>
-
                 <div className="maincss">
                 </div>
                         <MainCategory phrase="이런 글은 어떠세요?" content={Content} />
