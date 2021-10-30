@@ -90,7 +90,6 @@ export default function MainCategory({ phrase, content }) {
                         )}
             </div>
 
-
         </MainCategoryStyle >
     )
 }

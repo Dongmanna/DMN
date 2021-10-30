@@ -34,7 +34,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:4,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살꽁치 사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,
@@ -44,7 +44,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:5,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살 양파사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,
@@ -54,7 +54,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:6,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,
@@ -64,7 +64,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:7,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,
@@ -74,7 +74,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:8,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,
@@ -84,7 +84,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:9,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,
@@ -94,7 +94,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:10,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,
@@ -104,7 +104,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:11,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,
@@ -114,7 +114,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:12,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,
@@ -124,7 +124,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:13,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,
@@ -134,7 +134,7 @@ const Content = [
     {
         img:"./img/searchIcon.svg",
         id:14,
-        author:"a",
+        author:"b",
         title:"이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~이거 같이 살 사람~~",
         item:"스니커즈",
         limit:3,

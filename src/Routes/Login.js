@@ -144,7 +144,6 @@ const Login = () =>{
 						>
 							{'>'}
 						</div>
-
 						<div className="content">
 							<img src={login1} alt="" />
 							<img src={login2} alt="" />
