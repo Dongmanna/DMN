@@ -66,15 +66,11 @@ const Home = () => {
         <HomeStyle>
             <Header />
             <Link to="/Login"> 로그인</Link>
-
             <main>
-
                 <div className="search-box">
                     {/* <Ani/> */}
                     <SearchBar />
-
                 </div>
-
                 <div className="maincss">
                 </div>
                         <MainCategory phrase="이런 글은 어떠세요?" content={Content} />

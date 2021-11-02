@@ -1,22 +1,134 @@
-import React from "react";
+import React, { useState } from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import SearchHeader from "../Componenets/SearchHeader";
+import styled from "styled-components";
+import Content from "../data";
+import MypageCate from "../Componenets/MypageCate";
+import MypageCard from "../Componenets/MypageCards";
+
+const MypageStyle = styled.div`
+
+.profileimg{
+    position: absolute;
+    width:150px;
+    height:150px;
+    left:235px;
+    top:152px;
+    background: #F3F3F3;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4999px;
+}
+.profileinfo{
+    font-family: 'Roboto';
+    font-size:18px;
+    line-height:21px;
+}
+.nickname{
+    position:absolute;
+    width: 195px;
+    height:30px;
+    left: 413px;
+    top:177px;
+}
+.loc{
+    position:absolute;
+    width: 195px;
+    height:30px;
+    left: 413px;
+    top:225px;
+}
+.count{
+    position:absolute;
+    width: 195px;
+    height:30px;
+    left: 413px;
+    top:277px;
+}
+.contain{
+    position:absolute;
+    left:165px;
+    width: 1010px;
+    overflow: hidden;
+    .carousel{
+            position: relative;
+        .cards{
+            width: 90%;
+            display:flex;
+            flex-wrap: nowrap;
+            transform: translate(${(props) => props.num * -1012}px, 0);
+                            transition: 1s;
+}
+}
+}
+.rarrow{
+    position: absolute;
+    width: 75px;
+    height: 32px;
+    left: 1240px;
+    top: 735px;
+    border-top: 50px solid transparent;
+    border-left: 50px solid #9BBA74;
+    border-bottom: 50px solid transparent;
+    :hover{
+        cursor:pointer;
+    }
+}
+.larrow{
+    position: absolute;
+    width: 75px;
+    height: 32px;
+    left: 30px;
+    top: 735px;
+    border-top: 50px solid transparent;
+    border-right: 50px solid #9BBA74;
+    border-bottom: 50px solid transparent;
+    :hover{
+        cursor:pointer;
+    }
+}
+
+`
 
 const MyPage = () => {
+    const [carouselNum, setcarouselNum] = useState(0);
     return (
-        <>
+        <MypageStyle num={carouselNum}>
             <SearchHeader />
-            <h1>MyPage</h1>
-            <button>참여 중인 공동구매</button>
-            <button>참여 했던 공동구매</button>
-            <button>내가 쓴 게시물</button>
             <br></br>
+            <div className="profileinfo">
+                <div className="profileimg"></div>
+                <div className="nickname">닉네임</div>
+                <div className="loc">주소</div>
+                <div className="count">참여횟수</div>
+            </div>
+            <div className="larrow"
+                onClick={() => {
+                    carouselNum > 0 ? setcarouselNum(carouselNum - 1) :
+                        setcarouselNum(carouselNum);
+                }}></div>
+            <div className="rarrow"
+                onClick={() => {
+                    carouselNum < 10 ? setcarouselNum(carouselNum + 1)
+                        : setcarouselNum(carouselNum);
+                }}></div>
+            <MypageCate />
+            <div className="contain">
+                <div className="carousel">
+                    <div className="cards">
+                        <MypageCard content={Content} />
+                    </div>
+                    <div className="cards">
+                        <MypageCard content={Content} />
+                    </div>
+                </div>
+            </div>
             <Router>
                 <Link to="/Detail">
                     <button>card - Detail</button>
                 </Link>
             </Router>
-        </>
+        </MypageStyle>
     )
 }
 
