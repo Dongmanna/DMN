@@ -3,29 +3,29 @@ import styled from 'styled-components';
 import Card from './Card';
 
 const ProfileCategoryStyle = styled.div`
-
-width:80vw;
+width:100%;
+/* width:80vw; */
 margin-left: 10vw;
 max-height:200vh;
 
 .Im_in{
 display: flex;
-flex-wrap: wrap;
-margin-top:30%;
+flex-wrap: nowrap;
+margin-top:27vw;
 margin-bottom: 5%;
 font-family: Poppins;
 font-style: normal;
 font-weight: bold;
-font-size: 24px;
-line-height: 24px;
+font-size: 1.9vw;
 }
 
 .border{
 position: absolute;
-width: 1070px;
-height: 0px;
-left: 130px;
-top:423px;
+width: 82.5vw;
+height: 0vh;
+left: 11vw;
+margin-top:1.5rem;
+top:36vw;
 border: 3px solid #9BBA74;
 background-color: #9BBA74;
 }

@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import { HashRouter as Router, Link } from "react-router-dom";
-import MypageCate from './MypageCate';
 
 const ProfileCategoryStyle = styled.div`
 width:80vw;
 max-height:200vh;
 .content{
-    display: flex; 
-    flex-wrap: nowrap;
+    display: grid; 
+    grid-template-columns: repeat(8, minmax(325px,auto));
+    /* repeat 숫자는 포스트 개수 % 2 */
+    column-gap: 13px;
+    height: 475px;
 }
 .border{
 position: absolute;

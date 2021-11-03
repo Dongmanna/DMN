@@ -7,13 +7,13 @@ import MypageCate from "../Componenets/MypageCate";
 import MypageCard from "../Componenets/MypageCards";
 
 const MypageStyle = styled.div`
-
+width:100%;
 .profileimg{
     position: absolute;
-    width:150px;
-    height:150px;
-    left:235px;
-    top:152px;
+    width:13vw;
+    height:13vw;
+    left:18vw;
+    top:13vw;
     background: #F3F3F3;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
@@ -21,44 +21,39 @@ const MypageStyle = styled.div`
 }
 .profileinfo{
     font-family: 'Roboto';
-    font-size:18px;
-    line-height:21px;
+    font-size:1.8rem;
 }
+
 .nickname{
     position:absolute;
-    width: 195px;
-    height:30px;
-    left: 413px;
-    top:177px;
+    width: 19.5rem;
+    height:5vh;
+    left: 31.5vw;
+    top:15vw;
 }
 .loc{
     position:absolute;
-    width: 195px;
-    height:30px;
-    left: 413px;
-    top:225px;
+    width: 19.5rem;
+    height:5vh;
+    left: 31.5vw;
+    top:18.5vw;
 }
 .count{
     position:absolute;
-    width: 195px;
-    height:30px;
-    left: 413px;
-    top:277px;
+    width: 19.5rem;
+    height:5vh,;
+    left: 31.5vw;
+    top:22vw;
 }
 .contain{
     position:absolute;
-    left:165px;
-    width: 1010px;
+    left:12.8vw;
+    width: 77.5vw;
+    height: 36.2vw;
     overflow: hidden;
-    .carousel{
-            position: relative;
         .cards{
-            width: 90%;
-            display:flex;
-            flex-wrap: nowrap;
             transform: translate(${(props) => props.num * -1012}px, 0);
                             transition: 1s;
-}
 }
 }
 .rarrow{
@@ -98,9 +93,11 @@ const MyPage = () => {
             <br></br>
             <div className="profileinfo">
                 <div className="profileimg"></div>
-                <div className="nickname">닉네임</div>
-                <div className="loc">주소</div>
-                <div className="count">참여횟수</div>
+                <div className = "infos">
+                    <div className="nickname">닉네임</div>
+                    <div className="loc">주소</div>
+                    <div className="count">참여횟수</div>
+                </div>
             </div>
             <div className="larrow"
                 onClick={() => {
@@ -114,13 +111,8 @@ const MyPage = () => {
                 }}></div>
             <MypageCate />
             <div className="contain">
-                <div className="carousel">
-                    <div className="cards">
-                        <MypageCard content={Content} />
-                    </div>
-                    <div className="cards">
-                        <MypageCard content={Content} />
-                    </div>
+                <div className="cards">
+                    <MypageCard content={Content} />
                 </div>
             </div>
             <Router>
