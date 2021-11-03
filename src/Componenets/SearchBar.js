@@ -6,19 +6,20 @@ import { withRouter } from "react-router";
 
 
 const SearchBarStyle = styled.form`
-    border: solid var(--grn-1,green) 6px;
+    border: solid var(--grn-1,green) .6rem;
     border-radius:40px;
-    width:750px;
-    height:90px;
+    width:55vw;
+    height:10rem;
     display:flex;
     align-items:center;
-    padding-left:4.5rem;
+    padding:0 3%;
+    padding-right: 2%;
 
     input{
-        width:58rem;
-        height:4.5rem;
+        width:90%;
+        height:9rem;
         background-color: transparent;
-        font-size: 3rem;
+        font-size: 2.6rem;
         border:none;
       ::placeholder{
             color:var(--gray1);
@@ -41,14 +42,16 @@ const SearchBarStyle = styled.form`
         }
     
     button{
+        max-width:5vw;
+        img{
+            width:100%;
+        }
         background-color:transparent;
         border:none;
         cursor:pointer;
         padding:0;
-        height:50px; ///추후 반응형 고치기
-        box-shadow: 0.4px -0.4px 4px 0 var(--grn-1);
         :active{
-            box-shadow: -0.8px 0.8px 4px 0 var(--grn-1);
+
         }
     }
     

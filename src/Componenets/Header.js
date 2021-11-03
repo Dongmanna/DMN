@@ -3,54 +3,42 @@ import { HashRouter as Router, Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderStyle = styled.div`
+width:100%;
+height:10vh;
+padding-top:2vh;
+padding-right:4vw;
 .Header_R{
         font-family: 'NIXGONM-Vb';
         font-style: normal;
         font-weight: normal;
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 1.8rem;
         color: #A2A2A2;
+        display:flex;
+        justify-content: flex-end;
         }
 
     .gotowrite{
-        position: absolute;
-        width: 95px;
-        height: 24px;
-        left: 1067px;
-        top: 42px;
     }
     .gotomy{
-        position: absolute;
-        width: 88px;
-        height: 24px;
-        left: 1202px;
-        top: 42px;
+
+
     }
     .gotologout{
-        position: absolute;
-        width: 71px;
-        height: 24px;
-        left: 1336px;
-        top: 42px;
+
     }
     .border{
-        position: absolute;
-        width: 29px;
-        left: 1168px;
-        top: 52px;
-        border: solid 1.5px #A2A2A2;
-        background-color: #A2A2A2;
-        transform: rotate(90deg);
+        height:3rem;
+        margin:0 1.2rem;
+        border-right: solid 3px #A2A2A2;
+        transform:translate(0,-.5rem);
     }
 
     .border2{
-        position: absolute;
-        width: 29px;
-        left: 1300px;
-        top: 52px;
-        border: solid 1.5px #A2A2A2;
-        background-color: #A2A2A2;
-        transform: rotate(90deg);
+        margin:0 1.2rem;
+        height:3rem;
+        border-right: solid 3px #A2A2A2;
+        transform:translate(0,-.5rem);
+
     }
 `;
 
@@ -70,18 +58,12 @@ const Header = () => {
                 <SLink to="/">로고 이미지</SLink>
             </div>
             <div className="Header_R">
-                <div className="gotowrite">
-                    <SLink to="/Write"> 게시글 작성 </SLink>
-                </div>
+                    <SLink to="/Write" className="gotowrite"> 게시글 작성 </SLink>
                 <div className="border">
                 </div>
-                <div className="gotomy">
-                    <SLink to="/Mypage"> 마이페이지 </SLink>
-                </div>
+                    <SLink to="/Mypage" className="gotomy"> 마이페이지 </SLink>
                 <div className="border2" />
-                <div className="gotologout">
-                    <SLink to="/"> 로그아웃 </SLink>
-                </div>
+                    <SLink to="/" className="gotologout"> 로그아웃 </SLink>
             </div>
         </HeaderStyle>
     );

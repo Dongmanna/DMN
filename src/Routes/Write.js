@@ -21,7 +21,8 @@ const WriteStyle = styled.div`
 	.category {
 		width: 20rem;
 		height: 3rem;
-		border: var(--grn-1) 0.25rem solid;
+		border: var(--grn-1) 0.2rem solid;
+		border-radius: 8px;
 		padding-left: 1rem;
 		margin-bottom: 2rem;
 	}
@@ -37,6 +38,10 @@ const WriteStyle = styled.div`
 		:focus {
 			outline-width: 0;
 		}
+		::placeholder{
+			color:black;
+        }
+
 	}
 	.container {
 		display: flex;
@@ -52,21 +57,21 @@ const WriteStyle = styled.div`
 		justify-content: space-evenly;
 	}
 	.imgbox {
+		border:solid;
 		width: 40%;
 		height: 100%;
 		position:relative;
 		padding-left: calc((40% - 35vh) / 2) ;
 		img {
-		width: 34vmin;
-		height: 34vmin;
+		height: 100%;
 		}
 		.default-img{
-		width: 34vmin;
 		font-size:1.8rem;
 		padding: 0 4rem;
 		padding-top: calc(17vh - 2rem);
 		text-align:center;
-		height: 34vmin;
+		height: 100%;
+		/* width:  */
 		background-color: #f2f2f2;
 		z-index:-1;
 		
