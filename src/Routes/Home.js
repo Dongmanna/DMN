@@ -9,10 +9,11 @@ import styled from "styled-components";
 
 const HomeStyle = styled.main`
     .search-box{
-        height:75vh;
+        height:70vh;
         display:flex;
         justify-content: center;
         align-items: center;
+        padding-bottom:20vh;
     }
 `
 
@@ -65,14 +66,13 @@ const Home = () => {
     return (
         <HomeStyle>
             <Header />
-            <Link to="/Login"> 로그인</Link>
-            <main>
+            {/* <Link to="/Login"> 로그인</Link> */}
+            <div>
                 <div className="search-box">
                     {/* <Ani/> */}
                     <SearchBar />
                 </div>
-                <div className="maincss">
-                </div>
+                
                         <MainCategory phrase="이런 글은 어떠세요?" content={Content} />
                 <div className="card-cate">
                     <Router>
@@ -81,7 +81,7 @@ const Home = () => {
                         </Link>
                     </Router>
                 </div>
-            </main>
+            </div>
 
         </HomeStyle>
 
