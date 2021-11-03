@@ -6,6 +6,7 @@ const InputStyle = styled.input`
         width: 15vw;
         height: 3rem;
         border:solid 2px var(--grn-1);
+        border-radius: 3px;
         background-color: transparent;
         font-size: 1.8rem;
         ::placeholder{

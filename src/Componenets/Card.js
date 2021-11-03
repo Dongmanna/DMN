@@ -21,6 +21,7 @@ const CardStyle=styled.div`
         
     }
     .card{
+        border-radius: 5px;
         background-color: var(--bg-gray);
         width:325px;
         /* width: 100%; */
