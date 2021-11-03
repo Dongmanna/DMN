@@ -71,24 +71,20 @@ export default function MainCategory({ phrase, content }) {
                 <SelectorStyle category={category} c={"배달"} onClick={() => setcategory("배달")}>배달</SelectorStyle>
             </div>
             <div className="card-container">
-                        {contentData.map((post) => (
-                            <Card
-                                key={post.id}
-                                item={post.item}
-                                category={post.category}
-                                hot={(post.limit === post.participants.length + 1) ? true : false}
-                                img={post.img}
-                                num={post.participants.length + "/" + post.limit}
-                            >
-                                {post.title}
-                            </Card>
-                        )
-                        )}
+                {contentData.map((post) => (
+                    <Card
+                        key={post.id}
+                        item={post.item}
+                        category={post.category}
+                        hot={(post.limit === post.participants.length + 1) ? true : false}
+                        img={post.img}
+                        num={post.participants.length + "/" + post.limit}
+                    >
+                        {post.title}
+                    </Card>
+                )
+                )}
             </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> e6477ab3a538d240bc5f6da51ee336157eedcb91
         </MainCategoryStyle >
     )
 }
