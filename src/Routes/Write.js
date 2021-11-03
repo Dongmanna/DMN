@@ -57,18 +57,16 @@ const WriteStyle = styled.div`
 		position:relative;
 		padding-left: calc((40% - 35vh) / 2) ;
 		img {
-		width: 34vh;
-		min-width: 34vh;
-		max-width:34vh;
-		height: 34vh;
+		width: 34vmin;
+		height: 34vmin;
 		}
 		.default-img{
-		width: 34vh;
+		width: 34vmin;
 		font-size:1.8rem;
 		padding: 0 4rem;
 		padding-top: calc(17vh - 2rem);
 		text-align:center;
-		height: 34vh;
+		height: 34vmin;
 		background-color: #f2f2f2;
 		z-index:-1;
 		
@@ -136,7 +134,7 @@ const WriteStyle = styled.div`
 	
 	.btn {
 		position: absolute;
-		right: 10vw;
+		right: 14vw;
 	}
 `;
 const Write = () => {
