@@ -85,6 +85,10 @@ export default function MainCategory({ phrase, content }) {
                         )
                         )}
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e6477ab3a538d240bc5f6da51ee336157eedcb91
         </MainCategoryStyle >
     )
 }

@@ -13,6 +13,12 @@ const GlobalStyle= createGlobalStyle`
      font-weight: normal;
      font-style: normal;
 }
+@font-face {
+    font-family: 'Roboto';
+    src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    font-weight: normal;
+    font-style: notmal;
+}
     *{
         box-sizing:border-box;
         body{

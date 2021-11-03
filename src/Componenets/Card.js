@@ -22,19 +22,23 @@ const CardStyle=styled.div`
     }
     .card{
         background-color: var(--bg-gray);
-        width: 100%;
+        width:325px;
+        /* width: 100%; */
         height: 66%;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        position:absolute;
+        position:relative;
+        /* position: absolute; */
         top:11px;
         left:0;
         display:flex;
         :hover{
             /* box-shadow: 4px 4px 4px 0 var(--gray1) ; */
-            transform: translate(-0.4rem,-0.4rem);
+            /* transform: translate(-0.4rem,-0.4rem);
             width:102%;
             height:68%;
-            transition:.1s;
+            transition:.1s; */
+            transform: scale(1.05);
+            cursor: pointer;
 
         }
     }
@@ -57,7 +61,6 @@ const CardStyle=styled.div`
     }
     .container{
         font-family: 'NIXGONM-Vb';
-
         position:absolute;
         height:100%;
         right:0;

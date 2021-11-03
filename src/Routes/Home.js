@@ -66,9 +66,7 @@ const Home = () => {
         <HomeStyle>
             <Header />
             <Link to="/Login"> 로그인</Link>
-
             <main>
-
                 <div className="search-box">
                     {/* <Ani/> */}
                     <SearchBar />
