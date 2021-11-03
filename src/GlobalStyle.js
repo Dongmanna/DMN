@@ -21,7 +21,7 @@ const GlobalStyle= createGlobalStyle`
 }
     *{
         box-sizing:border-box;
-        body{
+        html{
             margin:0;
         }
     }
@@ -36,7 +36,14 @@ const GlobalStyle= createGlobalStyle`
         --gray1:#A1A1A1;
     }
     html{
+        width:100%;
         font-size:10px;
+        @media(max-width: 800px){
+            font-size: 8px;
+        }
+        @media(max-width: 400px){
+            font-size:4px;
+        }
     }
 `;
 
