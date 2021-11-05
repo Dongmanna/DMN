@@ -24,12 +24,10 @@ const InputStyle = styled.input`
     
     ${(props)=> props.size==="L" &&`
         width:22vw;
-        border:solid 1px #CFEBAC;
-        border-radius:4px;
+        border-bottom:solid 2px #CFEBAC;
         :focus{
             outline-width:0;
-            border:solid 1px var(--grn-1);
-            border-radius: 4px;
+            border-bottom:solid 3px var(--grn-1);
 
         }
     `}
