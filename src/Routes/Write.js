@@ -76,17 +76,19 @@ const WriteStyle = styled.div`
 		align-items: center;
 		img {
 		height: 100%;
+		width:35vmin;
+		height:35vmin;
 		}
 		.default-img{
 		font-size:1.6rem;
 		padding: 0 4rem;
-		padding-top: calc(17vh - 2rem);
+		padding-top: calc(17vmin - 2rem);
 		text-align:center;
 		/* max-width:calc(35vh - 3rem);
 		height:35vh;
 		max-height:40vw; */
-		width:35vh;
-		height:35vh;
+		width:35vmin;
+		height:35vmin;
 		
 		background-color: #f2f2f2;
 		/* z-index:-1; */

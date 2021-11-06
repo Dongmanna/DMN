@@ -11,8 +11,10 @@ const ButtonGreenAStyle = styled.button`
     position: absolute;
     bottom: 0;
     left: 0;
-    width: ${(props) => props.phase===1?0:200}px;
-    height: 64px;
+    width: ${(props) => props.phase===1?0:20}rem;
+    max-width:18vw;
+
+    height: 6.4rem;
     background-color: var(--grn-2);
     transition:1.5s;
     z-index: -1;
@@ -22,15 +24,19 @@ const ButtonGreenAStyle = styled.button`
     position: absolute;
     bottom: 0;
     right: 0;
-    width: ${(props) => props.phase===1?200:0}px;
-    height: 64px;
+    width: ${(props) => props.phase===1?20:0}rem;
+    max-width:18vw;
+
+    height: 6.4rem;
     background-color: var(--grn-1);
     transition:1.5s;
     z-index: -2;
     }
 
-    width:200px;
-    height:64px;
+    width:20rem;
+    max-width:18vw;
+
+    height:6.4rem;
     color:#fff;
     font-size:2rem;
     border:none;

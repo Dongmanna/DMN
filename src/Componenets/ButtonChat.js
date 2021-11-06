@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 export default function ButtonChat({children}) {
     const ButtonChatStyle=styled.button`
-    width: 132px;
-    height: 32px;
+    width: 13rem;
+    height: 3rem;
     border:none;
     background-color: #fff;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);

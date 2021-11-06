@@ -7,7 +7,7 @@ import { withRouter } from "react-router";
 
 const SearchBarStyle = styled.form`
     border: solid var(--grn-1,green) .6rem;
-    border-radius:40px;
+    border-radius:4rem;
     width:55vw;
     height:10rem;
     display:flex;

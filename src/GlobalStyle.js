@@ -38,11 +38,17 @@ const GlobalStyle= createGlobalStyle`
     html{
         width:100%;
         font-size:10px;
+        padding:0px;
+        margin:0;
         @media(max-width: 800px){
             font-size: 8px;
         }
         @media(max-width: 400px){
             font-size:4px;
+        }
+        body{
+            margin:0;
+            padding:0;
         }
     }
 `;

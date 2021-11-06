@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 const ButtonGreenStyle = styled.button`
-    width:200px;
-    height:64px;
+    width:20rem;
+    max-width:18vw;
+    height:6.4rem;
     background-color: var(--grn-1);
     color:#fff;
     font-size:2rem;
