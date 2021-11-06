@@ -10,9 +10,11 @@ import login6 from "../img/login6.png";
 import login7 from "../img/login7.png";
 
 const LoginStyle = styled.div`
+	width:100%;
 	display: flex;
 	.left {
-		width: 54vw;
+		width: 54%;
+		min-width:50rem;
 		height: 100vh;
 		background-color: var(--grn-1);
 		position: relative;
@@ -20,10 +22,12 @@ const LoginStyle = styled.div`
 			position: absolute;
 			right: 0;
 			.carousel {
-				margin-top: 15vh;
+				margin-top: 20vh;
 				position: relative;
 				overflow: hidden;
-				width: 55rem;
+				width: 50rem;
+				
+
 				.p {
 					font-size: 4rem;
 					color: white;
@@ -43,10 +47,10 @@ const LoginStyle = styled.div`
 				}
 				.content {
 					display: flex;
-					transform: translate(${(props) => props.num * -55}rem, 0);
+					transform: translate(${(props) => props.num * -50}rem, 0);
 					transition: 1s;
 					img {
-						height: 55rem;
+						width: 50rem;
 					}
 				}
 			}
@@ -54,15 +58,27 @@ const LoginStyle = styled.div`
 	}
 
 	.right {
-		width: 46vw;
+		width: 45%;
 		height: 100vh;
 		position: relative;
+		.login-box {
+			width:70%;
+			max-width:calc(100vw - 50rem);
+
+			border: solid 1px var(--grn-1);
+			height: 50rem;
+			margin-top: 20vh;
+			@media(max-width:1040px){
+					width:46vw;
+				}
 		input {
             width:65%;
             height:5rem;
+			padding-left: 1rem;
             margin-bottom:3rem;
 			border: solid 1px black;
 			background-color: transparent;
+			border-radius: 2px;
 			font-size: 1.4rem;
 			::placeholder {
 				color: black;
@@ -77,11 +93,12 @@ const LoginStyle = styled.div`
 			}
 		}
 		button {
-			width: 100px;
-			height: 30px;
+			width: 10rem;
+			height: 3rem;
 			background: #ffffff;
-			border: 2px solid var(--grn-1);
+			border: .2rem solid var(--grn-1);
 			font-size: 1.5rem;
+			border-radius:3px;
 			transition: 0.4s;
 			:hover {
 				background-color: var(--grn-1);
@@ -93,17 +110,12 @@ const LoginStyle = styled.div`
 			}
 		}
 		
-		.login-box {
-			border: solid 1px var(--grn-1);
-			height: 55rem;
-			margin-top: 15vh;
-			width: 45rem;
+		
 			
 		}
         form{
-            padding-top:10%;
             width:100%;
-            margin-top:25%;
+            margin-top:10rem;
             height:50%;
             display: flex;
 			flex-direction: column;
@@ -113,6 +125,10 @@ const LoginStyle = styled.div`
 			display: flex;
 			justify-content: space-evenly;
             width:100%;
+			@media(max-width:600px){
+				display:inline;
+				padding-left:5%;
+			}
 		}
 	}
 `;

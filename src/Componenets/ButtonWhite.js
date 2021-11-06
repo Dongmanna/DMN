@@ -3,8 +3,10 @@ import styled from 'styled-components'
 
 export default function ButtonWhite({children}) {
     const ButtonWhiteStyle=styled.button`
-    width: 150px;
-    height: 50px;  
+    width: 15rem;
+    max-width:12vw;
+
+    height: 5rem;  
     background: #FFFFFF;
     border: 2px solid var(--grn-1); 
     font-size:2rem;

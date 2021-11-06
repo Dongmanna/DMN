@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 export default function ButtonGray({children}) {
     const ButtonGrayStyle=styled.button`
-    width: 80px;
-    height: 30px;
+    width: 8rem;
+    height: 3rem;
     border: 1px solid #B9B9B9;
     border-radius: 5px;
     font-size:1.4rem;

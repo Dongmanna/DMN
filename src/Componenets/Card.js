@@ -3,42 +3,40 @@ import styled from 'styled-components'
 
 
 const CardStyle=styled.div`
-    width:30%;
-    margin-right:3%;
-    height:240px;
+    width:23vw;
+    @media(max-width:1040px){
+        width:36vw;
+    }
+    height:26rem;
     background-color:#fff;
     position:relative;
     color:black;
     .red-sign{
         background-color: var(--hred);
-        width: 91px;
-        height: 26px;
+        border-radius:1px;
+        width: 8rem;
+        height: 2.5rem;
         color:#fff;
         text-align: center;
-        line-height:26px;
+        line-height:2.5rem;
         z-index:1;
         position:absolute;
         
     }
     .card{
-        border-radius: 5px;
-        background-color: var(--bg-gray);
-        width:325px;
-        /* width: 100%; */
-        height: 66%;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: .5rem;
+        background-color:#f8f8f8;
+        width:100%;
+        height: 19rem;
+        /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+        box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 2.1px;
+        /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px; */
         position:relative;
-        /* position: absolute; */
-        top:11px;
-        left:0;
+        margin-top:1rem;
         display:flex;
         :hover{
-            /* box-shadow: 4px 4px 4px 0 var(--gray1) ; */
-            /* transform: translate(-0.4rem,-0.4rem);
-            width:102%;
-            height:68%;
-            transition:.1s; */
-            transform: scale(1.05);
+            transition: .1s;
+            transform: scale(1.02);
             cursor: pointer;
 
         }
@@ -46,10 +44,10 @@ const CardStyle=styled.div`
     .title{
         font-family: 'NIXGONM-Vb';
         position:absolute;
-        top:160px;
+        top:19rem;
         font-family: NIXGONFONTS V2.0;
-        font-size: 2rem;
-        line-height: 2.6rem;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
         line-break: break-all;
         overflow:hidden;
         text-overflow:ellipsis;
@@ -62,16 +60,13 @@ const CardStyle=styled.div`
     }
     .container{
         font-family: 'NIXGONM-Vb';
-        position:absolute;
         height:100%;
-        right:0;
-        width:50%;
-        padding:2rem;
+        width:40%;
+        padding-left:1rem;
         display:flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
         p{
-        height:3rem;
         font-family: NIXGONFONTS V2.0;
         font-size: 1.4rem;
         line-height: 1.5rem;
@@ -87,24 +82,24 @@ const CardStyle=styled.div`
     }
     img{
         margin:auto 0;
-        margin-left: 1.5rem;
-        width: 154px;
-        height: 120px;
-        border:solid var(--grn-1) 1px;
-        border-radius:5px;
+        width: 60%;
+        height: 100%;
+        border-radius:.1rem;
+        border:solid .2rem var(--grn-1);
         background-color: #fff;
     }
     .category{
-        border-radius:40px;
+        border-radius:40000000px;
         background-color: #fff;
         text-align: center;
         position:absolute;
-        right:10px;
-        bottom:10px;
-        height:4rem;
-        width:4rem;
+        right:1rem;
+        bottom:1rem;
+        height:4.5rem;
+        width:4.5rem;
         line-height:4rem;
         font-weight:600;
+        opacity: 0.3;
     }
 
 `
@@ -116,8 +111,8 @@ export default function Card({children, hot, img, item, num, category} ) {
                 <img src={img} alt="사진" /> 
 
                 <div className="container">
-                    <p>{item}</p> 
-                    <p> 모집인원: {num}</p>
+                    <p>품목  {item}</p> 
+                    <p>정원  {num}</p>
                     <div className="category">{category}</div>
                 </div>
 

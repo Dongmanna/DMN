@@ -7,7 +7,7 @@ import { withRouter } from "react-router";
 
 const SearchBarStyle = styled.form`
     border: solid var(--grn-1,green) .6rem;
-    border-radius:40px;
+    border-radius:4rem;
     width:55vw;
     height:10rem;
     display:flex;
@@ -58,31 +58,37 @@ const SearchBarStyle = styled.form`
     ${(props) =>
     props.size==="S" &&`          
     border: solid var(--grn-1,green) 3px;
-    width:320px;
-    height:40px;
-    padding-left:2rem;
-    position: absolute;
-    left:715px;
-    top:32px;
+    width:30rem;
+    height:4.3rem;
+    margin-top:2vh;
+    padding-right:5%;
+
     .after{
-            height:1.5rem;
-            border-right:solid var(--grn-1) 0.18rem;
-            margin-right:1rem;
+            height:1.7rem;
+            border-right:solid var(--grn-1) 2px;
+            margin-right:.5rem;
         }
 
     input{
-        width:24rem;
+        width:90%;
         height:1.7rem;
         background-color: transparent;
         font-size: 1.2rem;
         border:none;
         }
-    img{
+    
+        button{
         width:2rem;
-    }
-    button{
-        height:2rem;
-    }
+        img{
+            width:100%;
+        }
+        background-color:transparent;
+        border:none;
+        cursor:pointer;
+        padding:0;
+        :active{
+
+        }
 
     `}
 

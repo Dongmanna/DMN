@@ -8,14 +8,18 @@ import Input from "../Componenets/Input"
 
 const WriteStyle = styled.div`
 	font-family: 'NIXGONM-Vb';
-	width: 100vw;
-	height: 100vh;
-	padding: 0 13vw;
+	width: 100%;
+	.body{
+		width:74vw;
+		margin:0 13vw;
+		margin-bottom:10rem;
+		padding-top:5vh;
+
+	}
 	.top {
 		display: flex;
 		height: 35vh;
-		width: 74vw;
-		margin-top: 12vh;
+		width: 100%;
 		margin-bottom:2%;
 	}
 	.category {
@@ -25,6 +29,14 @@ const WriteStyle = styled.div`
 		border-radius: 8px;
 		padding-left: 1rem;
 		margin-bottom: 2rem;
+		:hover{
+			background-color: #f2f2f2;
+		
+		}
+		:focus{
+			background-color: white;
+			outline-width: 0;
+		}
 	}
 	.title {
 		width: 100%;
@@ -57,38 +69,43 @@ const WriteStyle = styled.div`
 		justify-content: space-evenly;
 	}
 	.imgbox {
-		border:solid;
 		width: 40%;
 		height: 100%;
-		position:relative;
-		padding-left: calc((40% - 35vh) / 2) ;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		img {
 		height: 100%;
+		width:35vmin;
+		height:35vmin;
 		}
 		.default-img{
-		font-size:1.8rem;
+		font-size:1.6rem;
 		padding: 0 4rem;
-		padding-top: calc(17vh - 2rem);
+		padding-top: calc(17vmin - 2rem);
 		text-align:center;
-		height: 100%;
-		/* width:  */
+		/* max-width:calc(35vh - 3rem);
+		height:35vh;
+		max-height:40vw; */
+		width:35vmin;
+		height:35vmin;
+		
 		background-color: #f2f2f2;
-		z-index:-1;
+		/* z-index:-1; */
 		
 		}
 	}
 	
 	.imgbtn {
-		float:left;
 		width:6rem;
 		height: 1.8rem;
+		
 		text-align: center;
 		border: 1px solid #b9b9b9;
 		border-radius: 5px;
 		font-size: 1.4rem;
 		background-color: #fff;
 		color: #b9b9b9;
-		margin-left:calc(17vh - 3rem);
 		:hover {
 			box-shadow: 1px 1px 7px;
 		}
@@ -98,10 +115,11 @@ const WriteStyle = styled.div`
 		}
 	}
 	.imgsub {
+		position:absolute;
 		opacity: 0;
 	}
 	textarea {
-		width: 74vw;
+		width: 100%;
 		height: 35vh;
 		border: none;
 		box-shadow: 0 0  1px;
@@ -146,7 +164,7 @@ const Write = () => {
     return (
 		<WriteStyle>
 			<SearchHeader />
-			<form action="">
+			<form className="body"action="">
 				<div className="top">
 					<div className="inputs">
 						<select name="category"className="category">

@@ -7,6 +7,7 @@ import Content from "../data";
 import SearchBar from '../Componenets/SearchBar';
 import styled from "styled-components";
 
+
 const HomeStyle = styled.main`
     .search-box{
         height:70vh;

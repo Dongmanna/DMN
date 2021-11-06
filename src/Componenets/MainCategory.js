@@ -19,6 +19,7 @@ max-height:200vh;
 .card-container{
     display:flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     width:100%;
 }
 .categories{

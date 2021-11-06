@@ -1,176 +1,141 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import styled from 'styled-components'
-import Input from '../Componenets/Input'
+import React from 'react';
+import styled from 'styled-components';
+import Input from '../Componenets/Input';
+import ButtonGreen from '../Componenets/ButtonGreen';
+
 const SignUpStyle = styled.div`
-	overflow: hidden;
-	width: 100vw;
-	height: 100vh;
-	.highlight {
-		height: 70vh;
-		width: 35vw;
-		margin: 0 auto;
-		margin-top: 15vh;
-		z-index: 3;
-		background-color: transparent;
-		border: solid var(--grn-2) 2px;
-		/* overflow: hidden; */
-	}
-	.content {
-		display: flex;
-		transform: translate(${(props) => props.num * -35}vw, 0);
-		transition: 1s;
+	display: flex;
+	justify-content: center;
+	padding-top: 10vh;
+	h1 {
+		font-family: 'Roboto';
+		color: #424242;
+		font-size: 2rem;
+		margin-bottom: 4rem;
 	}
 	.box {
-		min-width: 32vw;
-		height: 67vh;
-		border: dotted var(--grn-1) 1px;
-		margin: 1.5vh 1.5vw;
-		padding: 3rem;
-		position: relative;
-		.next {
-			background: #ffffff;
-			border: 1px solid var(--grn-1);
-			transition: 0.4s;
-			:hover {
-				background-color: var(--grn-1);
-				color: #fff;
-				border: none;
-			}
-			:active {
-				box-shadow: -0.8px 0.8px 4px 0 var(--gray1);
-			}
-			width: 6rem;
-            height:3rem;
-			font-size: 1.5rem;
-			position: absolute;
-			right: 2rem;
-			bottom: 15vh;
-		}
-        .sub{
-            width:12rem;
-            height:4rem;
-        }
-		h1 {
-			font-size: 3rem;
-		}
-		h2 {
-			margin-left: 3rem;
-			color: var(--gray1);
-		}
-		Input {
-			width: 15vw;
-			margin-left: 3rem;
-			font-size: 1.2rem;
-			padding-left: 1rem;
-		}
-        .input-box {
-			padding-top: 10vh;
-		}
-        .double-box{
-            padding-top: 5vh;
-        }
+		width: 50rem;
 	}
-	
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.line {
+		border-bottom: solid #f2f2f2 2px;
+		width: 100%;
+	}
+	label {
+		font-size: 1.8rem;
+		font-weight: bold;
+		line-height: 4rem;
+		display: block;
+		margin-top: 4rem;
+	}
+	.input-box {
+		width: 80%;
+	}
+	h2 {
+		font-size: 1.5rem;
+		color: gray;
+		font-weight: 500;
+		font-family: 'NIXGONM-Vb';
+		margin-bottom: 2rem;
+	}
+	h3 {
+		display: inline-block;
+		margin: 0 0.8rem;
+		color: #f2f2f2;
+		font-size: 1.8rem;
+	}
+	Input {
+		width: 100%;
+		border-top: solid 2px var(--grn-1);
+		border-left: solid 2px var(--grn-1);
+		border-right: solid 2px var(--grn-1);
+		border-radius: 5px;
+		height: 4.2rem;
+		:hover {
+			background-color: #f2f2f2;
+		}
+		:focus {
+			outline-width: 0;
+			border: solid 2px orange;
+			background-color: white;
+		}
+	}
+	.email input {
+		width: 50%;
+	}
+	select {
+		background-color: transparent;
+		height: 4rem;
+		width: calc(50% - 4rem);
+		border-radius: 5px;
+		border: var(--grn-1) 2px solid;
+
+		:focus {
+			outline-width: 0;
+
+			border: solid 2px orange;
+		}
+	}
+    button{
+        margin-top:5rem;
+        margin-bottom:5rem;
+        width:80%;
+
+    }
 `;
+
 export default function SignUp() {
-    // function getLocation() {
-    //     if (navigator.geolocation) {
-    //         // GPS를 지원하면
-    //         navigator.geolocation.getCurrentPosition(
-    //             function (position) {
-    //                 const latitude = position.coords.latitude;
-    //                 const longitude = position.coords.longitude;
-    //                 const coords = position.coords;
-    //                 console.log(latitude);
-    //                 var geocoder = new kakao.maps.services.Geocoder();
-    //                 function searchAddrFromCoords(coords, callback) {
-    //                     // 좌표로 행정동 주소 정보를 요청합니다
-    //                     geocoder.coord2RegionCode(coords.longitude, coords.latitude, callback);
-    //                 }
-    //                 searchAddrFromCoords(coords, displayCenterInfo);
-    
-    //                 function displayCenterInfo(result, status) {
-    //                     if (status === kakao.maps.services.Status.OK) {
-    //                         for (var i = 0; i < result.length; i++) {
-    //                             // 행정동의 region_type 값은 'H' 이므로
-    //                             if (result[i].region_type === "H") {
-    //                                 const address = result[0].region_2depth_name;
-    //                                 setgeoInfo(address);
-    //                                 break;
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             },
-    //             function (error) {
-    //                 console.error(error);
-    //             },
-    //             {
-    //                 enableHighAccuracy: false,
-    //                 maximumAge: 0,
-    //                 timeout: Infinity,
-    //             }
-    //         );
-    //     } else {
-    //         alert("GPS를 지원하지 않습니다");
-    //     }
-    // }
-    const [num, setNum] = useState(0);
-    const [geoInfo, setgeoInfo] = useState("");
-    // useEffect(() => {
-    //         getLocation()
-    // }, [])
-    console.log(num);
-    
-    return (
-        <SignUpStyle num={num}>
-            <div className="highlight">
-                <form className="content">
-                    <div className="first box">
-                        <h1>1.아이디</h1>
-                        <h2>아이디를 입력해주세요.</h2>
-                        <div className="input-box">
-                            <Input size="L" placeholder="아이디를 입력해주세요"></Input>
-                        </div>
-                        <button className="next" onClick={num<3?()=>setNum(num+1):""}>다음</button>
-                    </div>
-                    <div className="second box">
-                        <h1>2.비밀번호</h1>
-                        <h2>비밀번호는 최소 하나 이상의 문자와 숫자를 포함하는 8자 이상의 조합이어야 합니다.</h2>
-                        <div className="double-box">
-                            <Input size="L"placeholder="비밀번호를 입력해주세요"></Input>
-                            <br />  경고메시지 <br />
-                            <Input size="L"placeholder="비밀번호를 확인해주세요"></Input>
-                        </div>
-                        
+	return (
+		<SignUpStyle>
+			<div className="box">
+				<h1>회원가입</h1>
+				<div className="line"></div>
+				<form action="">
+					<div className="input-box email">
+						<label htmlFor="">이메일</label>
+						<h2>이메일을 입력해주세요.</h2>
+						<Input
+							type="text"
+							id="email-input"
+							placeholder="이메일"
+						/>
+						<h3>@</h3>
+						<select name="" id="">
+							<option value="naver.com">naver.com</option>
+							<option value="gmail.com">gmail.com</option>
+							<option value="_manual">직접입력</option>
+						</select>
+					</div>
 
-                    <button className="next" onClick={num<3?()=>setNum(num+1):""}>다음</button>
+					<div className="input-box password">
+						<label htmlFor="">비밀번호</label>
+						<h2>비밀번호를 입력해주세요.</h2>
+						<Input type="text" placeholder="비밀번호 입력" />
+					</div>
 
-                    </div>
-                    <div className="third box">
-                        <h1>3.닉네임</h1>
-                        <h2>닉네임을 입력해주세요</h2>
-                        <div className="input-box">
-                            <Input size="L" placeholder="닉네임을 입력해주세요"></Input>
-                        </div>
-                    <button className="next" onClick={num<3?()=>setNum(num+1):""}>다음</button>
+					<div className="input-box nickname">
+						<label htmlFor="">닉네임</label>
+						<h2>
+							앞으로의 거래에서 사용할 별명을 입력해주세요. 한 번
+							정한 닉네임은 바꿀 수 없어요.
+						</h2>
+						<Input type="text" placeholder="닉네임 입력" />
+					</div>
 
-                    </div>
-                    <div className="fourth box">
-                        <h1>4.지역 확인</h1>
-                        <h2>현재 위치를 기반으로 활동지역을 설정합니다. <br />버튼을 눌러 지역을 확인해주세요.</h2>
-                        <div className="input-box">
-                        <Input size="L" value="geoInfo"></Input>
-                        </div>
-                    <Link to= "/"><button type="submit" className="next sub">회원가입하기</button></Link>
-                    </div>
-                </form>
-            </div>
-            {/* <script
-        type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ffa2bfd8acfec27a8fec4112952c13e6&libraries=services"
-    ></script> */}
-        </SignUpStyle>
-    )
+					<div className="input-box address">
+						<label htmlFor="">주소</label>
+						<h2>
+							현재 위치하신 주소를 입력해주세요 ex) 마포구 대흥동
+						</h2>
+						<Input type="text" placeholder="주소" />
+					</div>
+						<ButtonGreen>가입하기</ButtonGreen>
+				</form>
+			</div>
+		</SignUpStyle>
+	);
 }

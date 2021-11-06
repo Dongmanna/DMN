@@ -63,7 +63,7 @@ const Header = () => {
                 </div>
                     <SLink to="/Mypage" className="gotomy"> 마이페이지 </SLink>
                 <div className="border2" />
-                    <SLink to="/" className="gotologout"> 로그아웃 </SLink>
+                    <SLink to="/Login" className="gotologout"> 로그아웃 </SLink>
             </div>
         </HeaderStyle>
     );
