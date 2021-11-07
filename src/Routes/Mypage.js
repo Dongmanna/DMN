@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import SearchHeader from "../Componenets/SearchHeader";
 import styled from "styled-components";
-import Content from "../data";
+import {Content} from "../data";
 import MypageCate from "../Componenets/MypageCate";
 import MypageCard from "../Componenets/MypageCards";
 

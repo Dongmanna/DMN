@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Card from './Card.js';
-import { HashRouter as Router, Link } from 'react-router-dom';
 
 const MainCategoryStyle = styled.div`
 
@@ -77,9 +76,9 @@ export default function MainCategory({ phrase, content }) {
                         key={post.id}
                         item={post.item}
                         category={post.category}
-                        hot={(post.limit === post.participants.length + 1) ? true : false}
+                        hot={(post.limit === post.members.length + 1) ? true : false}
                         img={post.img}
-                        num={post.participants.length + "/" + post.limit}
+                        num={post.members.length + "/" + post.limit}
                     >
                         {post.title}
                     </Card>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import Header from "../Componenets/Header";
-import Content from "../data";
+import {Content} from "../data";
 import styled from "styled-components";
 import MainCategory from "../Componenets/MainCategory";
 import SearchBarResult from "../Componenets/SearchBarResult";

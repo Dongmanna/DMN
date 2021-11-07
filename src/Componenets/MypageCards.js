@@ -51,9 +51,9 @@ const MypageCard = ({ content }) => {
                             key={post.id}
                             item={post.item}
                             category={post.category}
-                            hot={(post.limit === post.participants.length + 1) ? true : false}
+                            hot={(post.limit === post.members.length + 1) ? true : false}
                             img={post.img}
-                            num={post.participants.length + "/" + post.limit}
+                            num={post.members.length + "/" + post.limit}
                             author={post.author}
                         >
                             {post.title}

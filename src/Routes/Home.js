@@ -3,7 +3,7 @@ import { HashRouter as Router, Link } from "react-router-dom";
 import Header from "../Componenets/Header";
 import MainCategory from "../Componenets/MainCategory";
 import "../css/Home.css"
-import Content from "../data";
+import{ Content} from "../data";
 import SearchBar from '../Componenets/SearchBar';
 import styled from "styled-components";
 
