@@ -19,8 +19,13 @@ max-height:200vh;
     justify-content: space-evenly;
     width:100%; */
     display: grid; 
-    grid-template-columns: repeat(3,minmax(33%, auto));
-    /* repeat 숫자는 포스트 개수 % 2 */
+    @media(max-width: 1500px){
+        grid-template-columns: repeat(3,minmax(33%, auto));
+    }
+    @media(max-width: 1040px){
+        grid-template-columns: repeat(2,minmax(50%, auto));
+    }
+
     column-gap: 0.1%;
 }
 .categories{

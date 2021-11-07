@@ -4,11 +4,17 @@ import Card from './Card';
 import { HashRouter as Router, Link } from "react-router-dom";
 
 const ProfileCategoryStyle = styled.div`
+
 width:80vw;
 max-height:200vh;
 .content{
     display: grid; 
-    grid-template-columns: repeat(8,minmax(33%, auto));
+    @media(max-width: 1500px){
+        grid-template-columns: repeat(8,minmax(33%, auto));
+    }
+    @media(max-width: 1050px){
+        grid-template-columns: repeat(8,minmax(50%, auto));
+    }
     /* repeat 숫자는 포스트 개수 % 2 */
     column-gap: 0.1%;
 }
@@ -33,8 +39,6 @@ const MypageCard = ({ content }) => {
     useEffect(() => {
         if (category === '') return;
         setpostData(() =>
-            // content &&
-            (content.author = "a") &&
             content.filter((post) =>
                 post.category.match(category)
 
