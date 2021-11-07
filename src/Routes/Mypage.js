@@ -49,7 +49,7 @@ width:100%;
     position:absolute;
     left:12.8vw;
     width: 77.5vw;
-    height: 36.2vw;
+    height: 41vw;
     overflow: hidden;
         .cards{
             transform: translate(${(props) => props.num * -1012}px, 0);
@@ -58,26 +58,25 @@ width:100%;
 }
 .rarrow{
     position: absolute;
-    width: 75px;
-    height: 32px;
-    left: 1240px;
-    top: 735px;
-    border-top: 50px solid transparent;
-    border-left: 50px solid #9BBA74;
-    border-bottom: 50px solid transparent;
+    width: 5vw;
+    right: 1vw;
+    top: 56vw;
+    border-top: 5rem solid transparent;
+    border-left: 5rem solid #9BBA74;
+    border-bottom: 5rem solid transparent;
     :hover{
         cursor:pointer;
     }
 }
 .larrow{
     position: absolute;
-    width: 75px;
-    height: 32px;
-    left: 30px;
-    top: 735px;
-    border-top: 50px solid transparent;
-    border-right: 50px solid #9BBA74;
-    border-bottom: 50px solid transparent;
+    margin-left:1vw;
+    width: 5vw;
+    left: 1vw;
+    top: 56vw;
+    border-top: 5rem solid transparent;
+    border-right: 5rem solid #9BBA74;
+    border-bottom: 5rem solid transparent;
     :hover{
         cursor:pointer;
     }
