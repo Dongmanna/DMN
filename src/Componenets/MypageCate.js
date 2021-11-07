@@ -9,25 +9,17 @@ margin-left: 10vw;
 max-height:200vh;
 
 .Im_in{
+width: 82%;
 display: flex;
 flex-wrap: nowrap;
-margin-top:27vw;
-margin-bottom: 5%;
+margin-top:26vw;
+margin-bottom: 1%;
 font-family: Poppins;
 font-style: normal;
 font-weight: bold;
 font-size: 1.9vw;
-}
-
-.border{
-position: absolute;
-width: 82.5vw;
-height: 0vh;
-left: 11vw;
-margin-top:1.5rem;
-top:36vw;
-border: 3px solid #9BBA74;
-background-color: #9BBA74;
+border-bottom: solid var(--grn-1) 0.3rem;
+    margin-bottom:2rem;
 }
 `
 const SelectedStyle = styled.p`

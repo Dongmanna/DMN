@@ -8,20 +8,19 @@ width:80vw;
 max-height:200vh;
 .content{
     display: grid; 
-    grid-template-columns: repeat(8, minmax(325px,auto));
+    grid-template-columns: repeat(8,minmax(33%, auto));
     /* repeat 숫자는 포스트 개수 % 2 */
-    column-gap: 13px;
-    height: 475px;
+    column-gap: 0.1%;
 }
-.border{
+/* .border{
 position: absolute;
-width: 1070px;
+width: 80vw;
 height: 0px;
 left: 130px;
-top: 400px;
+top: 50vh;
 border: 3px solid #9BBA74;
 background-color: #9BBA74;
-}
+} */
 `
 const MypageCard = ({ content }) => {
     const [category, setcategory] = useState("");

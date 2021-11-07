@@ -8,8 +8,6 @@ const MainCategoryStyle = styled.div`
 width:80vw;
 margin:0 10vw;
 max-height:200vh;
-
-
 .phrase{
     font-size:3rem;
     margin-bottom:4rem;
@@ -17,20 +15,21 @@ max-height:200vh;
     font-family: 'Poppins';
 }
 .card-container{
-    display:flex;
+    /* display:flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width:100%;
+    width:100%; */
+    display: grid; 
+    grid-template-columns: repeat(3,minmax(33%, auto));
+    /* repeat 숫자는 포스트 개수 % 2 */
+    column-gap: 0.1%;
 }
 .categories{
     padding-left:1rem;
     display:flex;
     border-bottom: solid var(--grn-1) 0.3rem;
     margin-bottom:2rem;
-    
 }
-
-
 `
 const SelectorStyle = styled.p`
         font-family: 'Poppins';
