@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HashRouter as Router, Switch, Route} from "react-router-dom";
 import Chatting from "./Chatting";
 import Detail from "./Detail";
@@ -9,13 +9,16 @@ import Mypage from "./Mypage";
 import Result from "./Result";
 import Write from "./Write";
 import SignUp from "./SignUp"
+import ScrollToTop from "../Componenets/ScrollToTop";
 
 
 
 function Routers() {
     const [isLoggedin, setIsLoggein] = useState(false);
+    
     return (
         <Router >
+            <ScrollToTop/>
             <Switch>
                 {/* {isLoggedin ? (
                     <>

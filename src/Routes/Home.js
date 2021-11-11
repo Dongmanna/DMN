@@ -1,12 +1,11 @@
-import React from "react";
-import { HashRouter as Router, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import Header from "../Componenets/Header";
 import MainCategory from "../Componenets/MainCategory";
 import "../css/Home.css"
 import{ Content} from "../data";
 import SearchBar from '../Componenets/SearchBar';
 import styled from "styled-components";
-
+import axios from 'axios';
 
 const HomeStyle = styled.main`
     .search-box{
@@ -24,16 +23,16 @@ const Ani = () => {
         <>
             <div className="Clouds">
                 < div className="cloud cloud--one">
-                    <img src="https://cdn.pixabay.com/photo/2014/03/25/15/24/cloud-296722_1280.png"></img>
+                    <img src="https://cdn.pixabay.com/photo/2014/03/25/15/24/cloud-296722_1280.png" alt=""></img>
                 </div>
                 <div className="cloud cloud--two">
-                    <img src="https://cdn.pixabay.com/photo/2014/03/25/15/24/cloud-296722_1280.png"></img>
+                    <img src="https://cdn.pixabay.com/photo/2014/03/25/15/24/cloud-296722_1280.png" alt=""></img>
                 </div>
                 <div className="cloud cloud--three">
-                    <img src="https://cdn.pixabay.com/photo/2014/03/25/15/24/cloud-296722_1280.png"></img>
+                    <img src="https://cdn.pixabay.com/photo/2014/03/25/15/24/cloud-296722_1280.png" alt=""></img>
                 </div>
                 <div className="cloud cloud--four">
-                    <img src="https://cdn.pixabay.com/photo/2014/03/25/15/24/cloud-296722_1280.png"></img>
+                    <img src="https://cdn.pixabay.com/photo/2014/03/25/15/24/cloud-296722_1280.png" alt=""></img>
                 </div>
             </div>
 
@@ -64,10 +63,31 @@ const Ani = () => {
 }
 
 const Home = () => {
+    
+    // //백이랑 연결하는 부분
+
+    // const [Content, setContent] = useState("")
+
+    // //url에서 정보 받아오기
+    // async function getContent(){
+    //     try{
+    //         const response = await axios.get('url');
+    //         setContent(response.data);
+    //         console.log(Content);
+    //     }catch(error){
+    //         console.error(error)
+
+    //     }
+    // };
+
+    useEffect(() => {
+        // getContent();
+    }, [])
+
+
     return (
         <HomeStyle>
             <Header />
-            {/* <Link to="/Login"> 로그인</Link> */}
             <div>
                 <div className="search-box">
                     {/* <Ani/> */}
@@ -76,11 +96,7 @@ const Home = () => {
                 
                         <MainCategory phrase="이런 글은 어떠세요?" content={Content} />
                 <div className="card-cate">
-                    <Router>
-                        <Link to="/Detail">
-                            <button>Card - Detail</button>
-                        </Link>
-                    </Router>
+                    
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import temp_img from "../img/temp_image1.png"
 
 const CardStyle=styled.div`
     width:23vw;
@@ -14,13 +14,15 @@ const CardStyle=styled.div`
     .red-sign{
         background-color: var(--hred);
         border-radius:1px;
-        width: 8rem;
-        height: 2.5rem;
+        width: 8.5rem;
+        height: 3rem;
         color:#fff;
+        font-weight:700;
         text-align: center;
-        line-height:2.5rem;
+        line-height:3rem;
         z-index:1;
         position:absolute;
+        transform: translate(-0.9rem,-1rem);
         
     }
     .card{
@@ -35,8 +37,8 @@ const CardStyle=styled.div`
         margin-top:1rem;
         display:flex;
         :hover{
-            transition: .1s;
-            transform: scale(1.02);
+            transition: .35s;
+            transform: scale(1.05);
             cursor: pointer;
 
         }
@@ -69,7 +71,7 @@ const CardStyle=styled.div`
         p{
         font-family: NIXGONFONTS V2.0;
         font-size: 1.4rem;
-        line-height: 1.5rem;
+        line-height: 1.6rem;
         line-break: break-all;
         overflow:hidden;
         text-overflow:ellipsis;
@@ -85,7 +87,6 @@ const CardStyle=styled.div`
         width: 60%;
         height: 100%;
         border-radius:.1rem;
-        border:solid .2rem var(--grn-1);
         background-color: #fff;
     }
     .category{
@@ -108,7 +109,7 @@ export default function Card({children, hot, img, item, num, category} ) {
         <CardStyle>
             {hot?<div className="red-sign">마감임박</div>:"" }
             <div className="card">
-                <img src={img} alt="사진" /> 
+                <img src={temp_img} alt="사진" /> 
 
                 <div className="container">
                     <p>품목  {item}</p> 

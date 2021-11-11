@@ -3,13 +3,13 @@ import styled from 'styled-components'
 
 export default function ButtonWhite({children}) {
     const ButtonWhiteStyle=styled.button`
-    width: 15rem;
+    width: 12rem;
     max-width:12vw;
-
-    height: 5rem;  
+    margin: 0 1rem;
+    height: 3rem;  
     background: #FFFFFF;
     border: 2px solid var(--grn-1); 
-    font-size:2rem;
+    font-size:1.5rem;
     transition:.4s;
     :hover{
         background-color: var(--grn-1);

@@ -3,8 +3,12 @@ import styled from 'styled-components'
 
 const ButtonGreenAStyle = styled.button`
     position:relative;
+    margin-right:2%;
     p{
         z-index:3;
+        color:white;
+        font-size:2rem;
+        transition:1s;
     }
     &:before {
     content: '';
@@ -37,8 +41,7 @@ const ButtonGreenAStyle = styled.button`
     max-width:18vw;
 
     height:6.4rem;
-    color:#fff;
-    font-size:2rem;
+    
     border:none;
     cursor: pointer;
     z-index:1;
