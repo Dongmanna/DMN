@@ -1,9 +1,8 @@
 import React from "react";
-import { HashRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchHeader from "../Componenets/SearchHeader";
 import styled from "styled-components";
 import ButtonGreen from "../Componenets/ButtonGreen";
-import ButtonGray from "../Componenets/ButtonGray"
 import Input from "../Componenets/Input"
 
 const EditStyle = styled.div`

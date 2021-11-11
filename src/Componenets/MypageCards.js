@@ -9,9 +9,9 @@ width:80vw;
 max-height:200vh;
 .content{
     display: grid; 
-    @media(max-width: 1500px){
+    
         grid-template-columns: repeat(8,minmax(33%, auto));
-    }
+    
     @media(max-width: 1050px){
         grid-template-columns: repeat(8,minmax(50%, auto));
     }

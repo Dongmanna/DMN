@@ -1,9 +1,8 @@
 import React from "react";
-import { HashRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchHeader from "../Componenets/SearchHeader";
 import styled from "styled-components";
 import ButtonGreen from "../Componenets/ButtonGreen";
-import ButtonGray from "../Componenets/ButtonGray"
 import Input from "../Componenets/Input"
 
 const WriteStyle = styled.div`
@@ -193,7 +192,7 @@ const Write = () => {
 					<input type="file" id="input-file" className="imgsub"/>
                     </div>
 				</div>
-				<textarea name="body" id="" cols="30" rows="10" placeholder="만날 장소와 시간, 구매 방법과 배분방법 등을 간단히 적어주세요."></textarea>
+				<textarea name="body" id="" cols="30" rows="10" placeholder="만날 장소와 시간, 구매 방법과 배분방법 등을 간단히 적어주세요."/>
 				<br />
 				<Link to="Detail" className="btn">
 					<ButtonGreen type="submit">작성하기</ButtonGreen>

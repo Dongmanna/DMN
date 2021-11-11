@@ -104,7 +104,6 @@ function SearchBar({size, onclick, }) {
         setsearchText(e.target.value);
     }
     
-    console.log(searchText);
 
     return (
         <SearchBarStyle size={size}>

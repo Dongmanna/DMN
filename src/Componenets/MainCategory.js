@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import Card from './Card.js';
 
@@ -19,20 +20,22 @@ max-height:200vh;
     justify-content: space-evenly;
     width:100%; */
     display: grid; 
-    @media(max-width: 1500px){
+    
+    
         grid-template-columns: repeat(3,minmax(33%, auto));
-    }
+
     @media(max-width: 1040px){
         grid-template-columns: repeat(2,minmax(50%, auto));
     }
 
-    column-gap: 0.1%;
+    column-gap: 0.3%;
+    row-gap: 1.5%;
 }
 .categories{
     padding-left:1rem;
     display:flex;
     border-bottom: solid var(--grn-1) 0.3rem;
-    margin-bottom:2rem;
+    margin-bottom:4rem;
 }
 `
 const SelectorStyle = styled.p`
@@ -76,7 +79,7 @@ export default function MainCategory({ phrase, content }) {
             </div>
             <div className="card-container">
                 {contentData.map((post) => (
-                    <Card
+                    <Link to="/Detail" id={post.id}><Card
                         key={post.id}
                         item={post.item}
                         category={post.category}
@@ -85,7 +88,7 @@ export default function MainCategory({ phrase, content }) {
                         num={post.members.length + "/" + post.limit}
                     >
                         {post.title}
-                    </Card>
+                    </Card></Link>
                 )
                 )}
             </div>

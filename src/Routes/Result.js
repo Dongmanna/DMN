@@ -6,6 +6,7 @@ import {Content} from "../data";
 import styled from "styled-components";
 import MainCategory from "../Componenets/MainCategory";
 import SearchBarResult from "../Componenets/SearchBarResult";
+import axios from 'axios';
 
 
 
@@ -19,11 +20,27 @@ const ResultStyle=styled.div`
 }
 `
 const Result = ({location}) => {
-    const word = location.word; //여기서부터 다시
-    const [searchText, setsearchText] = useState(word); //여기 word는 고치고
+    const word = location.word; 
+    const [searchText, setsearchText] = useState(word); 
     const [resultData,setResultData]=useState(Content);
 
+    // //백이랑 연결하는 부분
+    // const [Content, setContent] = useState("")
+    // //url에서 정보 받아오기
+    // async function getContent(){
+    //     try{
+    //         const response = await axios.get('url');
+    //         setContent(response.data);
+    //         console.log(Content);
+    //     }catch(error){
+    //         console.error(error)
+
+    //     }
+    // };
+
     useEffect(()=>{
+        // getContent();
+
         setResultData(()=> Content.filter((post) => post.title.match(searchText)));
     },[searchText]);
 

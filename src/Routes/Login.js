@@ -8,6 +8,7 @@ import login4 from "../img/login4.png";
 import login5 from "../img/login5.png";
 import login6 from "../img/login6.png";
 import login7 from "../img/login7.png";
+import axios from 'axios';
 
 const LoginStyle = styled.div`
 	width:100%;
@@ -134,7 +135,32 @@ const LoginStyle = styled.div`
 `;
 
 const Login = () =>{
-    const [carouselNumber, setCarouselNumber] = useState(0);
+
+	const [carouselNumber, setCarouselNumber] = useState(0);
+
+	//input value관리
+	
+	const [Email, setEmail] = useState("")
+	const handleEmail = (e) => {
+        e.preventDefault();
+        setEmail(e.target.value);
+    };
+	const [PassWord, setPassWord] = useState("")
+	const handlePassWord = (e) => {
+        e.preventDefault();
+        setPassWord(e.target.value);
+		console.log(PassWord);
+    }
+
+	//axios submit
+	// const submit = ()=>{
+	// 	axios.post('url',
+	// 	{
+	// 		email: Email,
+	// 		Password:PassWord
+	// 	}
+	// 	);
+	// };
     return (
 		<LoginStyle num={carouselNumber}>
 			<div className="left">
@@ -175,11 +201,13 @@ const Login = () =>{
 			<div className="right">
                 <div className="login-box">
                     <form action="submit">
-                        <input type="text" placeholder="E-mail" />
-                        <input type="text" placeholder="Password" />
+                        <input type="text" placeholder="E-mail" onChange={handleEmail} />
+                        <input type="text" placeholder="Password" onChange={handlePassWord} />
                         <div className="btn-container">
-                        <button>로그인</button>
-                        <Link to="/SignUP"><button>회원가입</button></Link>
+                        {/* <button onClick={submit}>로그인</button> */}
+						<button onClick="">로그인</button>
+
+                        <Link to="/SignUP"><button >회원가입</button></Link>
                         </div>
 
                     </form>

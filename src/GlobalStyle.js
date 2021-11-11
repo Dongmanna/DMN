@@ -43,8 +43,8 @@ const GlobalStyle= createGlobalStyle`
         @media(max-width: 800px){
             font-size: 8px;
         }
-        @media(max-width: 400px){
-            font-size:4px;
+        @media(max-width: 560px){
+            font-size:6px;
         }
         body{
             margin:0;

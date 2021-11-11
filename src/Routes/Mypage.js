@@ -49,18 +49,18 @@ width:100%;
     position:absolute;
     left:12.8vw;
     width: 77.5vw;
-    @media(max-width: 1500px){
+    
             height: 41vw;
-    }
+   
         @media(max-width: 1040px){
             height: 80vw;
     }
     overflow: hidden;
 .cards{
-        @media(max-width: 1500px){
+        
             transform: translate(${(props) => props.num * -79}vw, 0);
                         transition: 1s;
-    }
+   
         @media(max-width: 1040px){
             transform: translate(${(props) => props.num * -79.5}vw, 0);
                             transition: 1s;
@@ -68,9 +68,9 @@ width:100%;
         }
 }
 .arrow{
-    @media(max-width: 1500px){
+    
             top: 56vw;
-    }
+    
         @media(max-width: 1040px){
             top: 70vw;
     }

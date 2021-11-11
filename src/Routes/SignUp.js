@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Input from '../Componenets/Input';
 import ButtonGreen from '../Componenets/ButtonGreen';
+import { Link } from 'react-router-dom';
 
 const SignUpStyle = styled.div`
 	display: flex;
@@ -83,7 +84,6 @@ const SignUpStyle = styled.div`
     button{
         margin-top:5rem;
         margin-bottom:5rem;
-        width:80%;
 
     }
 `;
@@ -133,7 +133,7 @@ export default function SignUp() {
 						</h2>
 						<Input type="text" placeholder="주소" />
 					</div>
-						<ButtonGreen>가입하기</ButtonGreen>
+						<Link to="/" > <ButtonGreen>가입하기</ButtonGreen></Link>
 				</form>
 			</div>
 		</SignUpStyle>
