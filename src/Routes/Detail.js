@@ -95,6 +95,9 @@ const DetailStyle = styled.div`
 				font-size: 1.6rem;
 				line-height: 3rem;
 				padding-left: 3%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+
 			}
 		}
 		.btntop {

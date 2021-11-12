@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchHeader from "../Componenets/SearchHeader";
 import styled from "styled-components";
 import ButtonGreen from "../Componenets/ButtonGreen";
 import Input from "../Componenets/Input"
+import {axios} from 'axios';
 
 const WriteStyle = styled.div`
 	font-family: 'NIXGONM-Vb';
@@ -160,6 +161,35 @@ const WriteStyle = styled.div`
 	}
 `;
 const Write = () => {
+
+	const [Category, setCategory] = useState("")
+	const [Region, setRegion] = useState("")
+	const [Item, setItem] = useState("")
+	const [Limit, setLimit] = useState("")
+	const [LinkA, setLinkA] = useState("")
+	const [Price, setPrice] = useState("")
+	const [Deadline, setDeadline] = useState("")
+	const [Body, setBody] = useState("")
+	const [Image, setImage] = useState("")
+
+	//axios submit
+
+	const submit = ()=>{
+		axios.post('url',
+		{
+			category:Category,
+			region:Region,
+			item:Item,
+			limit:Limit,
+			linka:LinkA,
+			price:Price,
+			deadline:Deadline,
+			body:Body,
+			imagea:Image,
+		}
+		);
+	};
+
     return (
 		<WriteStyle>
 			<SearchHeader />
@@ -174,14 +204,14 @@ const Write = () => {
 						<input type="text"  className="title"placeholder="제목을 입력해주세요" />
 						<div className="container">
 							<div className="left-con con">
-								<Input required placeholder='지역'></Input>
-								<Input required placeholder='품목'></Input>
-								<Input required placeholder='정원'></Input>
+								<Input required placeholder='지역' setState={setRegion}></Input>
+								<Input required placeholder='품목' setState={setItem}></Input>
+								<Input required placeholder='정원' setState={setLimit}></Input>
 							</div>
 							<div className="right-con con">
-								<Input size="L" placeholder="링크"></Input>
-								<Input size="L" placeholder="가격"></Input>
-								<Input size="L" placeholder="마감기한" type={"date"}></Input>
+								<Input size="L" placeholder="링크" setState={setLinkA}></Input>
+								<Input size="L" placeholder="가격" setState={setPrice}></Input>
+								<Input size="L" placeholder="마감기한" setState={setDeadline} type={"date"}></Input>
 							</div>
 						</div>
 					</div>
@@ -195,7 +225,7 @@ const Write = () => {
 				<textarea name="body" id="" cols="30" rows="10" placeholder="만날 장소와 시간, 구매 방법과 배분방법 등을 간단히 적어주세요."/>
 				<br />
 				<Link to="Detail" className="btn">
-					<ButtonGreen type="submit">작성하기</ButtonGreen>
+					<ButtonGreen type="submit" onClick={"submit"}>작성하기</ButtonGreen>
 				</Link>
 			</form>
 		</WriteStyle>

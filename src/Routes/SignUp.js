@@ -114,7 +114,7 @@ export default function SignUp() {
 					<div className="input-box password">
 						<label htmlFor="">비밀번호</label>
 						<h2>비밀번호를 입력해주세요.</h2>
-						<Input type="text" placeholder="비밀번호 입력" />
+						<Input type="password" placeholder="비밀번호 입력" />
 					</div>
 
 					<div className="input-box nickname">
