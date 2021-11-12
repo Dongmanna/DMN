@@ -34,16 +34,18 @@ const InputStyle = styled.input`
         }
     `}
 `
-export default function Input({size, placeholder, required}) {
+export default function Input({size, placeholder, required, type, setState}) {
     placeholder= (required)?"*"+placeholder:placeholder;
     //데이터 결과창에 넘겨줄 때 searchtext활용
     const [text, setText] = useState("");
     const handleText = (e) => {
         e.preventDefault();
         setText(e.target.value);
+        setState(text);
     }
+
     return (
-        <InputStyle size={size} placeholder={placeholder} value={text} onChange={handleText}>
+        <InputStyle size={size} placeholder={placeholder} value={text} onChange={handleText} type={type} >
         
         </InputStyle>
     )
