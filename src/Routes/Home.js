@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../Componenets/Header";
 import MainCategory from "../Componenets/MainCategory";
 import "../css/Home.css"
-import{ Content} from "../data";
+// import{ Content} from "../data";
 import SearchBar from '../Componenets/SearchBar';
 import styled from "styled-components";
 import axios from 'axios';
@@ -64,24 +64,23 @@ const Ani = () => {
 
 const Home = () => {
     
-    // //백이랑 연결하는 부분
+    //백이랑 연결하는 부분
 
-    // const [Content, setContent] = useState("")
+    const [Content, setContent] = useState([])
 
-    // //url에서 정보 받아오기
-    // async function getContent(){
-    //     try{
-    //         const response = await axios.get('url');
-    //         setContent(response.data);
-    //         console.log(Content);
-    //     }catch(error){
-    //         console.error(error)
+    //url에서 정보 받아오기
+    async function getContent(){
+        try{
+            const response = await axios.get( "http://127.0.0.1:8000/posts/");            
+            await setContent(response.data);
+        }catch(error){
+            console.error(error)
 
-    //     }
-    // };
+        }
+    };
 
     useEffect(() => {
-        // getContent();
+        getContent();
     }, [])
 
 
@@ -92,6 +91,7 @@ const Home = () => {
                 <div className="search-box">
                     {/* <Ani/> */}
                     <SearchBar />
+                    
                 </div>
                 
                         <MainCategory phrase="이런 글은 어떠세요?" content={Content} />

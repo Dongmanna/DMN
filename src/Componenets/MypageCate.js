@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Card from './Card';
 
 const ProfileCategoryStyle = styled.div`
 width:100%;
@@ -30,34 +29,14 @@ const SelectedStyle = styled.p`
         border-bottom:${(props) => props.c === props.category ? "var(--grn-1)" : "transparent"} solid 0.3rem;
         transition:.3s;
 `
-const MypageCate= ({ content }) => {
-    const [category, setcategory] = useState("");
-    const [postData, setpostData] = useState(content);
-
-    useEffect(() => {
-        setpostData(content)
-    }, [content]);
-
-    useEffect(() => {
-        if (category === '') return;
-        setpostData(() =>
-            // content &&
-            (content.author = "a") &&
-            content.filter((post) =>
-                post.category.match(category)
-
-            )
-        );
-    }, [category])
-
+const MypageCate= ({ categoryM, setcategoryM}) => {
     return (
         <ProfileCategoryStyle>
             <>
             <div className="Im_in">
-                <SelectedStyle category={category} c={""} onClick={() => setcategory("")}>전체</SelectedStyle>
-                <SelectedStyle category={category} c={"참여중인 공동구매"} onClick={() => setcategory("ongoing")}>참여중인 공동구매</SelectedStyle>
-                <SelectedStyle category={category} c={"참여했던 공동구매"} onClick={() => setcategory("past")}>참여했던 공동구매</SelectedStyle>
-                <SelectedStyle category={category} c={"내가 쓴 게시글"} onClick={() => setcategory("author")}>내가 쓴 게시글</SelectedStyle>
+                <SelectedStyle category={categoryM} c={"ongoing"} onClick={() => setcategoryM("ongoing")}>참여중인 공동구매</SelectedStyle>
+                <SelectedStyle category={categoryM} c={"past"} onClick={() => setcategoryM("past")}>참여했던 공동구매</SelectedStyle>
+                <SelectedStyle category={categoryM} c={"author"} onClick={() => setcategoryM("author")}>내가 쓴 게시글</SelectedStyle>
             </div>
             <div className="border"></div>
             </>

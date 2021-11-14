@@ -36,7 +36,7 @@ function Routers() {
                     <Route exact path="/Chatting">
                         <Chatting />
                     </Route>
-                    <Route exact path="/Detail">
+                    <Route path="/Detail">
                         <Detail />
                     </Route>
                     <Route exact path="/Edit">

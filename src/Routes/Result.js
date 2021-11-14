@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { HashRouter as Router, Link } from "react-router-dom";
+// import { HashRouter as Router, Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import Header from "../Componenets/Header";
-import {Content} from "../data";
 import styled from "styled-components";
 import MainCategory from "../Componenets/MainCategory";
 import SearchBarResult from "../Componenets/SearchBarResult";
@@ -22,42 +21,33 @@ const ResultStyle=styled.div`
 const Result = ({location}) => {
     const word = location.word; 
     const [searchText, setsearchText] = useState(word); 
-    const [resultData,setResultData]=useState(Content);
+    const [resultData,setResultData]=useState([]);
 
-    // //백이랑 연결하는 부분
-    // const [Content, setContent] = useState("")
-    // //url에서 정보 받아오기
-    // async function getContent(){
-    //     try{
-    //         const response = await axios.get('url');
-    //         setContent(response.data);
-    //         console.log(Content);
-    //     }catch(error){
-    //         console.error(error)
+    //백이랑 연결하는 부분
+    //url에서 정보 받아오기
+    async function getContent(){
+        try{
+            const response = await axios.get("http://127.0.0.1:8000/posts/");
+            setResultData(()=> response.data.filter((post) => post.title.match(searchText)));
 
-    //     }
-    // };
+        }catch(error){
+            console.error(error)
+
+        }
+    };
 
     useEffect(()=>{
-        // getContent();
+        getContent();
 
-        setResultData(()=> Content.filter((post) => post.title.match(searchText)));
-    },[searchText]);
-
-    console.log(word);
+    },[]);
     return (
         <ResultStyle>
             <Header />
             <div className="search-box">
                 <SearchBarResult searchText={searchText} setSearchText={setsearchText}/>
             </div>
-            
             <MainCategory phrase={ searchText? '"'+searchText  +'"에 대한 검색 결과입니다.':"검색어를 입력해주세요."} content={resultData}/>
-            <Router>
-                <Link to="/Detail">
-                    <button>Card - Detail</button>
-                </Link>
-            </Router>
+            
         </ResultStyle>
     )
 }

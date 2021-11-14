@@ -4,7 +4,9 @@ import SearchHeader from "../Componenets/SearchHeader";
 import styled from "styled-components";
 import ButtonGreen from "../Componenets/ButtonGreen";
 import Input from "../Componenets/Input"
-import {axios} from 'axios';
+import axios from 'axios';
+// import Cookies from 'js-cookie'
+
 
 const WriteStyle = styled.div`
 	font-family: 'NIXGONM-Vb';
@@ -161,8 +163,8 @@ const WriteStyle = styled.div`
 	}
 `;
 const Write = () => {
-
-	const [Category, setCategory] = useState("")
+	
+	const [Category, setCategory] = useState("Offline")
 	const [Region, setRegion] = useState("")
 	const [Item, setItem] = useState("")
 	const [Limit, setLimit] = useState("")
@@ -172,10 +174,74 @@ const Write = () => {
 	const [Body, setBody] = useState("")
 	const [Image, setImage] = useState("")
 
-	//axios submit
 
+	const handleBody = (e)=> {
+		e.preventDefault();
+		setBody(e.target.value);
+	};
+	const handleSelect = (e)=>{
+		setCategory(e.target.selectedIndex===0?"Offline":e.target.selectedIndex===1?"Online":"Delivery");
+	};
+
+	axios.defaults.xsrfCookieName = 'csrftoken';
+	axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+	axios.defaults.withCredentials = true
+
+	function getCookie(name) {
+		let cookieValue = null;
+		if (document.cookie && document.cookie !== '') {
+			const cookies = document.cookie.split(';');
+			for (let i = 0; i < cookies.length; i++) {
+				const cookie = cookies[i].trim();
+				// Does this cookie string begin with the name we want?
+				if (cookie.substring(0, name.length + 1) === (name + '=')) {
+					cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+					break;
+				}
+			}
+		}
+		return cookieValue;
+	}
+	// function getCookie(name) {
+	// 	var cookieValue = null;
+	// 	if (document.cookie && document.cookie !== '') {
+	// 		var cookies = document.cookie.split(';');
+	// 		for (var i = 0; i < cookies.length; i++) {
+	// 			var cookie = cookies[i].replace(' ', '');
+	// 			//var cookie = jQuery.trim(cookies[i]); 당신이 만약 jQuery를 사용한다면, 위 코드 대신 이 코드를 사용하여도 좋다
+	// 			if (cookie.substring(0, name.length + 1) === name + '=') {
+	// 				cookieValue = decodeURIComponent(
+	// 					cookie.substring(name.length + 1)
+	// 				);
+	// 				break;
+	// 			}
+	// 		}
+	// 	}
+	// 	return cookieValue;
+	// }
+
+	// const csrftoken = Cookies.get('csrftoken');
+
+	//{%csrf_token%}추가
+	
+	
+	
+	const csrftoken = getCookie('csrftoken');
+	const	CSRFToken = () => {
+			return (
+				<input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
+			);
+		};
+
+	//axios submit
+	// useEffect(() => {
+		
+		
+	// }, [])
+		
 	const submit = ()=>{
-		axios.post('url',
+		console.log(Category, Body);
+		axios.post("http://127.0.0.1:8000/posts/",
 		{
 			category:Category,
 			region:Region,
@@ -186,7 +252,13 @@ const Write = () => {
 			deadline:Deadline,
 			body:Body,
 			imagea:Image,
+		}, {
+			headers:{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'X-CSRFToken': csrftoken
 		}
+	}
 		);
 	};
 
@@ -194,38 +266,39 @@ const Write = () => {
 		<WriteStyle>
 			<SearchHeader />
 			<form className="body"action="">
+				<CSRFToken/>
 				<div className="top">
 					<div className="inputs">
-						<select name="category"className="category">
-							<option value="offline">오프라인</option>
-							<option value="online">온라인</option>
-							<option value="baedal">배달</option>
+						<select name="category"className="category"  onChange={handleSelect}>
+							<option value="Offline">오프라인</option>
+							<option value="Online">온라인</option>
+							<option value="Delivery" >배달</option>
 						</select>
-						<input type="text"  className="title"placeholder="제목을 입력해주세요" />
+						<input type="text"  name="title" className="title"placeholder="제목을 입력해주세요" />
 						<div className="container">
 							<div className="left-con con">
-								<Input required placeholder='지역' setState={setRegion}></Input>
-								<Input required placeholder='품목' setState={setItem}></Input>
-								<Input required placeholder='정원' setState={setLimit}></Input>
+								<Input required placeholder='지역'name="region" setState={setRegion} ></Input>
+								<Input required placeholder='품목' name="item" setState={setItem}></Input>
+								<Input required placeholder='정원' name="limit" setState={setLimit}></Input>
 							</div>
 							<div className="right-con con">
-								<Input size="L" placeholder="링크" setState={setLinkA}></Input>
-								<Input size="L" placeholder="가격" setState={setPrice}></Input>
-								<Input size="L" placeholder="마감기한" setState={setDeadline} type={"date"}></Input>
+								<Input size="L" placeholder="링크" name="link" setState={setLinkA}></Input>
+								{/* <Input size="L" placeholder="가격" name="price"setState={setPrice}></Input> */}
+								<Input size="L" placeholder="마감기한" name="deadline"setState={setDeadline} type={"date"}></Input>
 							</div>
 						</div>
 					</div>
 					<div className="imgbox">
 						{/* <img src="" alt=""  /> */}
 						<div className="default-img">사진을 추가하지 않으면 설정하신 품목에 맞는 랜덤 이미지가 배정됩니다.</div>
-						<label For="input-file" className="imgbtn">사진추가</label>
-					<input type="file" id="input-file" className="imgsub"/>
+						<label htmlFor="input-file" className="imgbtn">사진추가</label>
+					{/* <input type="file" id="input-file" className="imgsub"/> */}
                     </div>
 				</div>
-				<textarea name="body" id="" cols="30" rows="10" placeholder="만날 장소와 시간, 구매 방법과 배분방법 등을 간단히 적어주세요."/>
+				<textarea name="body" id="" cols="30" onChange={handleBody} rows="10" placeholder="만날 장소와 시간, 구매 방법과 배분방법 등을 간단히 적어주세요."/>
 				<br />
-				<Link to="Detail" className="btn">
-					<ButtonGreen type="submit" onClick={"submit"}>작성하기</ButtonGreen>
+				<Link to="/" className="btn" onClick={submit}>
+					<ButtonGreen type="submit" >작성하기</ButtonGreen>
 				</Link>
 			</form>
 		</WriteStyle>

@@ -28,42 +28,54 @@ border: 3px solid #9BBA74;
 background-color: #9BBA74;
 } */
 `
-const MypageCard = ({ content }) => {
-    const [category, setcategory] = useState("");
+const MypageCard = ({ content, categoryM }) => {
     const [postData, setpostData] = useState(content);
 
     useEffect(() => {
+        //필터 설정하기. A는 모두 현재 사용자로 수정하기
         setpostData(content)
-    }, [content]);
+        if (categoryM==="ongoing"){
+            setpostData(  
+				content.filter((post) => {
+                    return(!post.done
+                    //&&(post.members.includes("A"))
+                    )
+			}))
+        }else if(categoryM==="past"){
+            setpostData(
+				content.filter((post) => {
+                    return(post.done
+                        //&&(post.members.includes("A"))
+                        )
+			}))
+            
+        }else if(categoryM==="author"){
+            setpostData(
+				content.filter((post) => {
+                    return(post.author==="A")
+			}))
 
-    useEffect(() => {
-        if (category === '') return;
-        setpostData(() =>
-            content.filter((post) =>
-                post.category.match(category)
-
-            )
-        );
-    }, [category])
-
+        }
+    },[content])
+    const cards = postData && postData.map((post) => (
+        <Link to={{ pathname: '/Detail', post1: post }} key={post.id}>
+			<Card
+				item={post.item}
+				category={post.category}
+				hot={post.limit === post.members.length + 1 ? true : false}
+				img={post.image}
+				num={post.members.length + '/' + post.limit}
+			>
+				{post.title}
+			</Card>
+		</Link>
+    
+)
+)
     return (
         <ProfileCategoryStyle>
             <div className="content">
-                {postData && postData.map((post) => (
-                        <Card
-                            key={post.id}
-                            item={post.item}
-                            category={post.category}
-                            hot={(post.limit === post.members.length + 1) ? true : false}
-                            img={post.img}
-                            num={post.members.length + "/" + post.limit}
-                            author={post.author}
-                        >
-                            {post.title}
-                        </Card>
-                    
-                )
-                )}
+                {cards}
             </div>
         </ProfileCategoryStyle>
     )

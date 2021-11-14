@@ -58,12 +58,11 @@ const ButtonGreenAStyle = styled.button`
 
 `
 
-export default function ButtonGreenA({children, function1, function2, secondText}) {
-    const [phase, setPhase] = useState(1)
+export default function ButtonGreenA({children, function1, function2, secondText, part}) {
     return (
         // <ButtonGreenAStyle phase={phase}      onClick={phase===1?()=>{setPhase(0);function1()}:()=>{function2} > 실제 사용시
-        <ButtonGreenAStyle phase={phase}      onClick={phase===1?()=>{setPhase(2);}:()=>{setPhase(1)}} > {/* 콜백으로 넘기기 */}
-            <p>{phase===1?children:secondText}</p>
+        <ButtonGreenAStyle phase={part?0:1}      onClick={!part?()=>{function1(true)}:()=>{function2()}} > {/* 콜백으로 넘기기 */}
+            <p>{!part?children:secondText}</p>
 
         </ButtonGreenAStyle>
     )

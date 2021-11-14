@@ -3,15 +3,15 @@ import styled from 'styled-components'
 import avatar from "../img/avatar-pl.png"
 
 const CommentBoxStyle=styled.div`
-    width:60vw;
-    height:10vw;
+    width:65%;
+    min-height:4vw;
     border-bottom:.2rem solid var(--grn-1);
     display: flex;
     align-items: center;
     margin: 2rem 0;
     img{
-        width:5vw;
-        height:5vw;
+        width:3vw;
+        height:3vw;
         border-radius:40px;
     }
     .text{

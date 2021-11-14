@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderStyle = styled.div`

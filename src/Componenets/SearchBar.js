@@ -106,12 +106,27 @@ function SearchBar({size, onclick, }) {
     
 
     return (
-        <SearchBarStyle size={size}>
-            <input type="text" placeholder="검색어를 입력해주세요" value={searchText} onChange={handleSearch}/>
-            <div className="after"></div>
-            <Link to= {{pathname:"/Result",word:searchText}} ><button type="submit" onClick={onclick}><img src={searchIcon} alt="검색" /></button></Link>
-        </SearchBarStyle>
-    )
+		<SearchBarStyle size={size}>
+			<input
+				type="text"
+				placeholder="검색어를 입력해주세요"
+				value={searchText}
+				onChange={handleSearch}
+			/>
+			<div className="after"></div>
+			{size === 'S' ? (
+				<button type="submit" onClick={onclick}>
+					<img src={searchIcon} alt="검색" />
+				</button>
+			) : (
+				<Link to={{ pathname: '/Result', word: searchText }}>
+					<button type="submit" onClick={onclick}>
+						<img src={searchIcon} alt="검색" />
+					</button>
+				</Link>
+			)}
+		</SearchBarStyle>
+	);
 };
 
 export default withRouter(SearchBar);

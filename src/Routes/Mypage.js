@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { HashRouter as Router, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import SearchHeader from "../Componenets/SearchHeader";
 import styled from "styled-components";
-import { Content } from "../data";
 import MypageCate from "../Componenets/MypageCate";
 import MypageCard from "../Componenets/MypageCards";
+import axios from "axios";
 
 const MypageStyle = styled.div`
 width:100%;
@@ -102,6 +101,24 @@ width:100%;
 
 const MyPage = () => {
     const [carouselNum, setcarouselNum] = useState(0);
+    const [categoryM, setcategoryM] = useState("ongoing");
+    const [Content, setContent] = useState([])
+
+
+    async function getContent(){
+        try{
+            const response = await axios.get( "http://127.0.0.1:8000/posts/");            
+            await setContent(response.data);
+        }catch(error){
+            console.error(error)
+
+        }
+    };
+
+    useEffect(() => {
+        getContent();
+    },[])
+
     return (
         <MypageStyle num={carouselNum}>
             <SearchHeader />
@@ -109,9 +126,9 @@ const MyPage = () => {
             <div className="profileinfo">
                 <div className="profileimg"></div>
                 <div className="infos">
-                    <div className="nickname">닉네임</div>
+                    <div className="nickname">닉네임</div>                    {/* 닉네임, 주소 추가 - 현 사용자 정보 받아오기 구현 필 */}
+
                     <div className="loc">주소</div>
-                    <div className="count">참여횟수</div>
                 </div>
             </div>
             <div className="arrow larrow"
@@ -124,17 +141,13 @@ const MyPage = () => {
                     carouselNum < 10 ? setcarouselNum(carouselNum + 1)
                         : setcarouselNum(carouselNum);
                 }}></div>
-            <MypageCate />
+            <MypageCate categoryM={categoryM} setcategoryM={setcategoryM}/>
             <div className="contain">
                 <div className="cards">
-                    <MypageCard content={Content} />
+                    <MypageCard content={Content} categoryM={categoryM} />
                 </div>
             </div>
-            <Router>
-                <Link to="/Detail">
-                    <button>card - Detail</button>
-                </Link>
-            </Router>
+            
         </MypageStyle>
     )
 }

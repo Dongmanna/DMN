@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import Card from './Card.js';
+import { withRouter } from "react-router";
+
 
 const MainCategoryStyle = styled.div`
 
@@ -52,12 +54,12 @@ const SelectorStyle = styled.p`
 `
 
 
-export default function MainCategory({ phrase, content }) {
+function MainCategory({ phrase, content }) {
     const [category, setcategory] = useState("");
     const [contentData, setContentData] = useState(content);
     useEffect(() => {
         setContentData(content)
-    }, [content]);
+    },[content]);
 
 
     useEffect(() => {
@@ -66,32 +68,34 @@ export default function MainCategory({ phrase, content }) {
                 post.category.match(category)
             )
         );
-    }, [category]);
+    },[content, category]);
 
+    const cards = contentData.map((post) => (
+		<Link to={{ pathname: '/Detail', post1: post }} key={post.id}>
+			<Card
+				item={post.item}
+				category={post.category}
+				hot={post.limit === post.members.length + 1 ? true : false}
+				img={post.image}
+				num={post.members.length + '/' + post.limit}
+			>
+				{post.title}
+			</Card>
+		</Link>
+	));
     return (
         <MainCategoryStyle>
             <div className="phrase">{phrase}</div>
             <div className="categories">
                 <SelectorStyle category={category} c={""} onClick={() => setcategory("")}>전체</SelectorStyle>
-                <SelectorStyle category={category} c={"오프라인"} onClick={() => setcategory("오프라인")}>오프라인</SelectorStyle>
-                <SelectorStyle category={category} c={"온라인"} onClick={() => setcategory("온라인")}>온라인</SelectorStyle>
-                <SelectorStyle category={category} c={"배달"} onClick={() => setcategory("배달")}>배달</SelectorStyle>
+                <SelectorStyle category={category} c={"Offline"} onClick={() => setcategory("Offline")}>오프라인</SelectorStyle>
+                <SelectorStyle category={category} c={"Online"} onClick={() => setcategory("Online")}>온라인</SelectorStyle>
+                <SelectorStyle category={category} c={"Delivery"} onClick={() => setcategory("Delivery")}>배달</SelectorStyle>
             </div>
             <div className="card-container">
-                {contentData.map((post) => (
-                    <Link to="/Detail" id={post.id}><Card
-                        key={post.id}
-                        item={post.item}
-                        category={post.category}
-                        hot={(post.limit === post.members.length + 1) ? true : false}
-                        img={post.img}
-                        num={post.members.length + "/" + post.limit}
-                    >
-                        {post.title}
-                    </Card></Link>
-                )
-                )}
+                {cards}
             </div>
         </MainCategoryStyle >
     )
 }
+export default withRouter(MainCategory)
