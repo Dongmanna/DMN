@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Input from '../Componenets/Input';
 import ButtonGreen from '../Componenets/ButtonGreen';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const SignUpStyle = styled.div`
 	display: flex;
@@ -89,6 +90,33 @@ const SignUpStyle = styled.div`
 `;
 
 export default function SignUp() {
+
+	const [Email, setEmail] = useState("")
+	// const [EmailAt,setEmailAt] = useState("")
+	const [Password1, setPassword1] = useState("")
+	const [Password2, setPassword2] = useState("")
+	const [Nickname, setNickname] = useState("")
+	const [Address, setAddress] = useState("")
+
+	
+	async function submit(){
+        try{
+            const response = await axios.post( "http://127.0.0.1:8000/api/registration/",
+			{
+				email: Email,
+				password1:Password1,
+				password2:Password2,
+				nickname:Nickname,
+				address:Address,
+				// profile_image:"",
+			}
+			);            
+            
+        }catch(error){
+            console.error(error)
+
+        }
+    };
 	return (
 		<SignUpStyle>
 			<div className="box">
@@ -99,22 +127,26 @@ export default function SignUp() {
 						<label htmlFor="">이메일</label>
 						<h2>이메일을 입력해주세요.</h2>
 						<Input
-							type="text"
+							type="email"
 							id="email-input"
 							placeholder="이메일"
+							name = "email"
+							setState ={setEmail}
 						/>
 						<h3>@</h3>
-						<select name="" id="">
+						{/* <select name="" id="">
 							<option value="naver.com">naver.com</option>
 							<option value="gmail.com">gmail.com</option>
 							<option value="_manual">직접입력</option>
-						</select>
+						</select> */}
 					</div>
 
 					<div className="input-box password">
 						<label htmlFor="">비밀번호</label>
 						<h2>비밀번호를 입력해주세요.</h2>
-						<Input type="password" placeholder="비밀번호 입력" />
+						<Input type="password" placeholder="비밀번호 입력" name="password1" setState ={setPassword1} />
+						<Input type="password" placeholder="비밀번호 확인" name="password2" setState ={setPassword2}/>
+
 					</div>
 
 					<div className="input-box nickname">
@@ -123,7 +155,7 @@ export default function SignUp() {
 							앞으로의 거래에서 사용할 별명을 입력해주세요. 한 번
 							정한 닉네임은 바꿀 수 없어요.
 						</h2>
-						<Input type="text" placeholder="닉네임 입력" />
+						<Input type="text" placeholder="닉네임 입력" name="nickname" setState ={setNickname}/>
 					</div>
 
 					<div className="input-box address">
@@ -131,9 +163,11 @@ export default function SignUp() {
 						<h2>
 							현재 위치하신 주소를 입력해주세요 ex) 마포구 대흥동
 						</h2>
-						<Input type="text" placeholder="주소" />
+						<Input type="text" placeholder="주소" name = "address" setState ={setAddress}/>
 					</div>
-						<Link to="/" > <ButtonGreen>가입하기</ButtonGreen></Link>
+						<Link to="/" > 
+						<ButtonGreen function1 = {submit}>가입하기</ButtonGreen>
+						</Link>
 				</form>
 			</div>
 		</SignUpStyle>

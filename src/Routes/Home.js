@@ -67,12 +67,27 @@ const Home = () => {
     //백이랑 연결하는 부분
 
     const [Content, setContent] = useState([])
-
+    const [UserNow, setUserNow] = useState("")
     //url에서 정보 받아오기
     async function getContent(){
         try{
-            const response = await axios.get( "http://127.0.0.1:8000/posts/");            
+            const response = await axios.get( "http://127.0.0.1:8000/api/posts/");            
             await setContent(response.data);
+        }catch(error){
+            console.error(error)
+
+        }
+    };
+    async function getUserNow(){
+        try{
+            const token = "Token "+localStorage.getItem("user_token")
+            const response = await axios.get( "http://127.0.0.1:8000/api/user/", {headers:{
+                'Accept': 'application/json',
+				'Content-Type': 'application/json',
+                "Authorization": token,
+            }});            
+            await setUserNow(response.data);
+            
         }catch(error){
             console.error(error)
 
@@ -81,12 +96,14 @@ const Home = () => {
 
     useEffect(() => {
         getContent();
+        getUserNow();
     }, [])
 
 
     return (
         <HomeStyle>
             <Header />
+            {/* {UserNow} */}
             <div>
                 <div className="search-box">
                     {/* <Ani/> */}

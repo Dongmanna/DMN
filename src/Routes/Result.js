@@ -27,7 +27,7 @@ const Result = ({location}) => {
     //url에서 정보 받아오기
     async function getContent(){
         try{
-            const response = await axios.get("http://127.0.0.1:8000/posts/");
+            const response = await axios.get("http://127.0.0.1:8000/api/posts/");
             setResultData(()=> response.data.filter((post) => post.title.match(searchText)));
 
         }catch(error){

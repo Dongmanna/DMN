@@ -38,14 +38,17 @@ export default function Input({size, placeholder, required, type, setState, name
     placeholder= (required)?"*"+placeholder:placeholder;
     //데이터 결과창에 넘겨줄 때 searchtext활용
     const [text, setText] = useState("");
-    const handleText = (e) => {
+    const handleText = async function(e){
         e.preventDefault();
-        setText(e.target.value);
-        setState(text);
-    }
+        if (e.target.value){
+            setText(e.target.value);
+        }
 
+    }
+    setState(text)
+    
     return (
-        <InputStyle size={size} placeholder={placeholder} value={text?text:""} onChange={handleText} type={type} name={name} >
+        <InputStyle size={size} placeholder={placeholder}   onChange={handleText} type={type} name={name} >
         
         </InputStyle>
     )

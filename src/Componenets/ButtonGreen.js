@@ -20,9 +20,9 @@ const ButtonGreenStyle = styled.button`
 
 `
 
-export default function ButtonGreen({children}) {
+export default function ButtonGreen({children, function1}) {
     return (
-        <ButtonGreenStyle>
+        <ButtonGreenStyle onClick = {function1}>
             {children}
         </ButtonGreenStyle>
     )

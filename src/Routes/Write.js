@@ -170,14 +170,18 @@ const Write = () => {
 	const [Limit, setLimit] = useState("")
 	const [LinkA, setLinkA] = useState("")
 	const [Price, setPrice] = useState("")
-	const [Deadline, setDeadline] = useState("")
+	const [Deadline, setDeadline] = useState(null)
 	const [Body, setBody] = useState("")
 	const [Image, setImage] = useState("")
-
+	const [Title, setTitle] = useState("")
 
 	const handleBody = (e)=> {
 		e.preventDefault();
 		setBody(e.target.value);
+	};
+	const handleTitle = (e)=> {
+		e.preventDefault();
+		setTitle(e.target.value);
 	};
 	const handleSelect = (e)=>{
 		setCategory(e.target.selectedIndex===0?"Offline":e.target.selectedIndex===1?"Online":"Delivery");
@@ -202,27 +206,7 @@ const Write = () => {
 		}
 		return cookieValue;
 	}
-	// function getCookie(name) {
-	// 	var cookieValue = null;
-	// 	if (document.cookie && document.cookie !== '') {
-	// 		var cookies = document.cookie.split(';');
-	// 		for (var i = 0; i < cookies.length; i++) {
-	// 			var cookie = cookies[i].replace(' ', '');
-	// 			//var cookie = jQuery.trim(cookies[i]); 당신이 만약 jQuery를 사용한다면, 위 코드 대신 이 코드를 사용하여도 좋다
-	// 			if (cookie.substring(0, name.length + 1) === name + '=') {
-	// 				cookieValue = decodeURIComponent(
-	// 					cookie.substring(name.length + 1)
-	// 				);
-	// 				break;
-	// 			}
-	// 		}
-	// 	}
-	// 	return cookieValue;
-	// }
-
-	// const csrftoken = Cookies.get('csrftoken');
-
-	//{%csrf_token%}추가
+	
 	
 	
 	
@@ -241,22 +225,27 @@ const Write = () => {
 		
 	const submit = ()=>{
 		console.log(Category, Body);
-		axios.post("http://127.0.0.1:8000/posts/",
+		const token = "Token "+localStorage.getItem("user_token")  
+		const Liimit = Limit*1;
+		console.log(Limit)
+		axios.post("http://127.0.0.1:8000/api/posts/",
 		{
 			category:Category,
 			region:Region,
+			title:Title,
 			item:Item,
-			limit:Limit,
+			limit:Liimit,
 			linka:LinkA,
-			price:Price,
-			deadline:Deadline,
+			// price:Price,
+			// deadline:Deadline,
 			body:Body,
 			imagea:Image,
 		}, {
 			headers:{
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
-				'X-CSRFToken': csrftoken
+				'X-CSRFToken': csrftoken,
+				"Authorization":token,
 		}
 	}
 		);
@@ -274,7 +263,7 @@ const Write = () => {
 							<option value="Online">온라인</option>
 							<option value="Delivery" >배달</option>
 						</select>
-						<input type="text"  name="title" className="title"placeholder="제목을 입력해주세요" />
+						<input type="text"  name="title" className="title"placeholder="제목을 입력해주세요" onChange = {handleTitle}/>
 						<div className="container">
 							<div className="left-con con">
 								<Input required placeholder='지역'name="region" setState={setRegion} ></Input>

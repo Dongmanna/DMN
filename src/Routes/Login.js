@@ -149,18 +149,19 @@ const Login = () =>{
 	const handlePassWord = (e) => {
         e.preventDefault();
         setPassWord(e.target.value);
-		console.log(PassWord);
     }
 
 	//axios submit
-	// const submit = ()=>{
-	// 	axios.post('url',
-	// 	{
-	// 		email: Email,
-	// 		Password:PassWord
-	// 	}
-	// 	);
-	// };
+	const login = ()=>{
+		axios.post('http://127.0.0.1:8000/api/login/',
+		{
+			email: Email,
+			password:PassWord
+		}
+
+		).then(res=> localStorage.setItem("user_token",res.data.key));
+
+	};
     return (
 		<LoginStyle num={carouselNumber}>
 			<div className="left">
@@ -200,12 +201,11 @@ const Login = () =>{
 			</div>
 			<div className="right">
                 <div className="login-box">
-                    <form action="submit">
-                        <input type="text" placeholder="E-mail" onChange={handleEmail} />
-                        <input type="text" placeholder="Password" onChange={handlePassWord} />
+                    <form >
+                        <input type="text" placeholder="E-mail" name = "email"onChange={handleEmail} />
+                        <input type="text" placeholder="Password" name = "password"onChange={handlePassWord} />
                         <div className="btn-container">
-                        {/* <button onClick={submit}>로그인</button> */}
-						<button onClick="">로그인</button>
+						<Link to="/"><button onClick={login}>로그인</button></Link>
 
                         <Link to="/SignUP"><button >회원가입</button></Link>
                         </div>
