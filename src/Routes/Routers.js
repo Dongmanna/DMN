@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HashRouter as Router, Switch, Route} from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Chatting from "./Chatting";
 import Detail from "./Detail";
 import Edit from "./Edit";
@@ -9,6 +9,7 @@ import Mypage from "./Mypage";
 import Result from "./Result";
 import Write from "./Write";
 import SignUp from "./SignUp"
+
 
 
 
@@ -48,7 +49,7 @@ function Routers() {
                     <Route path="/Mypage">
                         <Mypage />
                     </Route>
-                    <Route  path="/Result">
+                    <Route path="/Result">
                         <Result />
                     </Route>
                     <Route exact path="/Write">
