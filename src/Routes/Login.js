@@ -9,6 +9,8 @@ import login5 from "../img/login5.png";
 import login6 from "../img/login6.png";
 import login7 from "../img/login7.png";
 import axios from 'axios';
+// import {browserHistory} from 'react-router';
+
 
 const LoginStyle = styled.div`
 	width:100%;
@@ -134,7 +136,7 @@ const LoginStyle = styled.div`
 	}
 `;
 
-const Login = () =>{
+const Login = ({setIsLogged}) =>{
 
 	const [carouselNumber, setCarouselNumber] = useState(0);
 
@@ -150,16 +152,35 @@ const Login = () =>{
         e.preventDefault();
         setPassWord(e.target.value);
     }
+	async function getUserNow(){
+        try{
+
+            const token = "Token "+localStorage.getItem("user_token")
+            const response = await axios.get( "http://127.0.0.1:8000/api/user/", {headers:{
+                'Accept': 'application/json',
+				'Content-Type': 'application/json',
+                "Authorization": token,
+            }});            
+            await localStorage.setItem("userNow",JSON.stringify(response.data))
+            
+        }catch(error){
+            console.error(error)
+
+        }
+    };
 
 	//axios submit
-	const login = ()=>{
-		axios.post('http://127.0.0.1:8000/api/login/',
+	async function login(){
+		await axios.post('http://127.0.0.1:8000/api/login/',
 		{
 			email: Email,
 			password:PassWord
 		}
 
-		).then(res=> localStorage.setItem("user_token",res.data.key));
+		).then(res=> {localStorage.setItem("user_token",res.data.key);
+	});
+	await getUserNow();
+	setIsLogged(true)
 
 	};
     return (
@@ -205,7 +226,7 @@ const Login = () =>{
                         <input type="text" placeholder="E-mail" name = "email"onChange={handleEmail} />
                         <input type="text" placeholder="Password" name = "password"onChange={handlePassWord} />
                         <div className="btn-container">
-						<Link to="/"><button onClick={login}>로그인</button></Link>
+						<button onClick={login}>로그인</button>
 
                         <Link to="/SignUP"><button >회원가입</button></Link>
                         </div>

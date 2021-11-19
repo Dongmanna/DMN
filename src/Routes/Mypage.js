@@ -104,7 +104,7 @@ const MyPage = () => {
     const [categoryM, setcategoryM] = useState("ongoing");
     const [Content, setContent] = useState([])
 
-
+    console.log(categoryM)
     async function getContent(){
         try{
             const response = await axios.get( "http://127.0.0.1:8000/api/posts/");            
@@ -118,17 +118,17 @@ const MyPage = () => {
     useEffect(() => {
         getContent();
     },[])
-
+    const userNow = JSON.parse(localStorage.userNow)
     return (
         <MypageStyle num={carouselNum}>
-            <SearchHeader />
+            {/* <SearchHeader /> */}
             <br></br>
             <div className="profileinfo">
                 <div className="profileimg"></div>
                 <div className="infos">
-                    <div className="nickname">닉네임</div>                    {/* 닉네임, 주소 추가 - 현 사용자 정보 받아오기 구현 필 */}
+                    <div className="nickname">{userNow.nickname}</div>                    {/* 닉네임, 주소 추가 - 현 사용자 정보 받아오기 구현 필 */}
 
-                    <div className="loc">주소</div>
+                    <div className="loc">{userNow.address}</div>
                 </div>
             </div>
             <div className="arrow larrow"

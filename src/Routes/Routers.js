@@ -10,60 +10,57 @@ import Result from "./Result";
 import Write from "./Write";
 import SignUp from "./SignUp"
 import ScrollToTop from "../Componenets/ScrollToTop";
+import Header from "../Componenets/Header";
 
 
 
 function Routers() {
-    const [isLoggedin, setIsLoggein] = useState(false);
-    
+    const [isLogged,setIsLogged] = useState(false);
+    useEffect(() => {
+        if (localStorage.getItem("user_token")){
+            setIsLogged(true);
+        }        
+    }, [])
     return (
-        <Router >
-            <ScrollToTop/>
-            <Switch>
-                {/* {isLoggedin ? (
-                    <>
-                        <Route exact path="/" component={Home}>
-                            <Home />
-                        </Route>
-                    </>) : (
-                    <>
-                        <Route path="/" component={Home}>
-                            <Login />
-                        </Route>
-                    </>
-                )} */}
-                <>
-                    <Route exact path="/Chatting">
-                        <Chatting />
-                    </Route>
-                    <Route path="/Detail">
-                        <Detail />
-                    </Route>
-                    <Route exact path="/Edit">
-                        <Edit />
-                    </Route>
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
-                    <Route exact path="/Login">
-                        <Login />
-                    </Route>
-                    <Route path="/Mypage">
-                        <Mypage />
-                    </Route>
-                    <Route  path="/Result">
-                        <Result />
-                    </Route>
-                    <Route exact path="/Write">
-                        <Write />
-                    </Route>
-                    <Route exact path="/SignUp">
-                        <SignUp />
-                    </Route>
-                </>
-            </Switch>
-        </Router>
-    );
+		<Router>
+			<ScrollToTop />
+			{isLogged ? (<>
+				<Header s={true} setIsLogged={setIsLogged}/>
+				<Switch>
+					<>
+						<Route exact path="/Chatting">
+							<Chatting />
+						</Route>
+						<Route path="/Detail">
+							<Detail />
+						</Route>
+						<Route exact path="/Edit">
+							<Edit />
+						</Route>
+						<Route exact path="/">
+							<Home />
+						</Route>
+						<Route path="/Mypage">
+							<Mypage />
+						</Route>
+						<Route path="/Result">
+							<Result />
+						</Route>
+						<Route exact path="/Write">
+							<Write />
+						</Route>
+						<Route exact path="/SignUp">
+							<SignUp />
+						</Route>
+					</>
+				</Switch>
+				</>
+			) : (
+				<Login setIsLogged={setIsLogged} />
+			)}
+		</Router>
+
+	);
 };
 
 export default Routers;

@@ -12,16 +12,17 @@ width: 82%;
 display: flex;
 flex-wrap: nowrap;
 margin-top:26vw;
-margin-bottom: 1%;
 font-family: Poppins;
 font-style: normal;
 font-weight: bold;
 font-size: 1.9vw;
 border-bottom: solid var(--grn-1) 0.3rem;
-    margin-bottom:2rem;
+margin-bottom:2rem;
+
 }
 `
 const SelectedStyle = styled.p`
+font-size:2rem;
         cursor:pointer;
         margin-left:3%;
         margin-right: 7%;

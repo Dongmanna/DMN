@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-export default function ButtonGray({children, setPart}) {
-    const ButtonGrayStyle=styled.button`
+const ButtonGrayStyle=styled.button`
     width: 8rem;
     height: 3rem;
     border: 1px solid #B9B9B9;
@@ -19,9 +17,14 @@ export default function ButtonGray({children, setPart}) {
     }
     
     `
-
+export default function ButtonGray({children, setPart, function1, id}) {
+    
+    const cancel= ()=>{
+        function1(id);
+        setPart(false)
+    }
     return (
-        <ButtonGrayStyle onClick={()=>setPart(true)}>
+        <ButtonGrayStyle onClick={cancel}>
             {children}
         </ButtonGrayStyle>
     )

@@ -207,9 +207,7 @@ const Write = () => {
 		return cookieValue;
 	}
 	
-	
-	
-	
+
 	const csrftoken = getCookie('csrftoken');
 	const	CSRFToken = () => {
 			return (
@@ -217,18 +215,11 @@ const Write = () => {
 			);
 		};
 
-	//axios submit
-	// useEffect(() => {
 		
-		
-	// }, [])
-		
-	const submit = ()=>{
-		console.log(Category, Body);
+	async function submit(){
 		const token = "Token "+localStorage.getItem("user_token")  
 		const Liimit = Limit*1;
-		console.log(Limit)
-		axios.post("http://127.0.0.1:8000/api/posts/",
+		await axios.post("http://127.0.0.1:8000/api/posts/",
 		{
 			category:Category,
 			region:Region,
@@ -248,12 +239,30 @@ const Write = () => {
 				"Authorization":token,
 		}
 	}
-		);
+		).then(res=>axios.post(
+			`http://127.0.0.1:8000/api/posts/` + res.data.id + `/join/`,
+			{
+				_content:"",
+				_content_type:'application/json',
+			},
+			{
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+					Authorization: token,
+				},
+			}
+		));
+		//갓 작성한 포스트의 id값 받아오기-> response로 넘겨달라고 백에다가 요구
+		// await 
+		
+		
+		
 	};
 
     return (
 		<WriteStyle>
-			<SearchHeader />
+			{/* <SearchHeader /> */}
 			<form className="body"action="">
 				<CSRFToken/>
 				<div className="top">

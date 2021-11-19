@@ -71,7 +71,7 @@ function MainCategory({ phrase, content }) {
     },[content, category]);
 
     const cards = contentData.map((post) => (
-		<Link to={{ pathname: '/Detail', post1: post }} key={post.id}>
+		<Link to={{ pathname: '/Detail', postid: post.id }} key={post.id}>
 			<Card
 				item={post.item}
 				category={post.category}

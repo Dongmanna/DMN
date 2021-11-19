@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-export default function ButtonWhite({children}) {
-    const ButtonWhiteStyle=styled.button`
+const ButtonWhiteStyle=styled.button`
     width: 12rem;
     max-width:12vw;
     margin: 0 1rem;
@@ -21,8 +19,10 @@ export default function ButtonWhite({children}) {
         box-shadow: -0.8px 0.8px 4px 0 var(--gray1) ;
     }
     `
+export default function ButtonWhite({children, function1,type}) {
+    
     return (
-        <ButtonWhiteStyle>
+        <ButtonWhiteStyle type = {type} onClick={function1}>
             {children}
         </ButtonWhiteStyle>
     )

@@ -45,7 +45,8 @@ export default function Input({size, placeholder, required, type, setState, name
         }
 
     }
-    setState(text)
+    if (setState){
+    setState(text)}
     
     return (
         <InputStyle size={size} placeholder={placeholder}   onChange={handleText} type={type} name={name} >

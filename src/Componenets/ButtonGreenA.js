@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
@@ -58,10 +59,15 @@ const ButtonGreenAStyle = styled.button`
 
 `
 
-export default function ButtonGreenA({children, function1, function2, secondText, part}) {
+export default function ButtonGreenA({children, function1, function2, secondText, part, join,id}) {
+
+    function joinfunc(){
+        join(id);
+        function1(true);
+    }
     return (
         // <ButtonGreenAStyle phase={phase}      onClick={phase===1?()=>{setPhase(0);function1()}:()=>{function2} > 실제 사용시
-        <ButtonGreenAStyle phase={part?0:1}      onClick={!part?()=>{function1(true)}:()=>{function2()}} > {/* 콜백으로 넘기기 */}
+        <ButtonGreenAStyle phase={part?0:1}      onClick={!part?joinfunc:""} > {/* 콜백으로 넘기기 */}
             <p>{!part?children:secondText}</p>
 
         </ButtonGreenAStyle>

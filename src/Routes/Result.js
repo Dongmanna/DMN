@@ -42,7 +42,7 @@ const Result = ({location}) => {
     },[]);
     return (
         <ResultStyle>
-            <Header />
+            {/* <Header /> */}
             <div className="search-box">
                 <SearchBarResult searchText={searchText} setSearchText={setsearchText}/>
             </div>

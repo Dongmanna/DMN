@@ -63,11 +63,7 @@ const Ani = () => {
 }
 
 const Home = () => {
-    
-    //백이랑 연결하는 부분
-
     const [Content, setContent] = useState([])
-    const [UserNow, setUserNow] = useState("")
     //url에서 정보 받아오기
     async function getContent(){
         try{
@@ -78,31 +74,20 @@ const Home = () => {
 
         }
     };
-    async function getUserNow(){
-        try{
-            const token = "Token "+localStorage.getItem("user_token")
-            const response = await axios.get( "http://127.0.0.1:8000/api/user/", {headers:{
-                'Accept': 'application/json',
-				'Content-Type': 'application/json',
-                "Authorization": token,
-            }});            
-            await setUserNow(response.data);
-            
-        }catch(error){
-            console.error(error)
-
-        }
-    };
-
+    //로그인한 유저 정보 세션 스토리지에 저장
+    
     useEffect(() => {
         getContent();
-        getUserNow();
     }, [])
+    // useEffect(() => {
+    //     getUserNow()
+    // }, [localStorage.getItem("user_token")])
+    
 
 
     return (
         <HomeStyle>
-            <Header />
+            {/* <Header /> */}
             {/* {UserNow} */}
             <div>
                 <div className="search-box">

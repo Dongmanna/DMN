@@ -38,25 +38,30 @@ const MypageCard = ({ content, categoryM }) => {
             setpostData(  
 				content.filter((post) => {
                     return(!post.done
-                    //&&(post.members.includes("A"))
+                    &&(post.members.some(
+                        (member) =>
+                            member.url === JSON.parse(localStorage.userNow).url
                     )
-			}))
+                    )
+                    )}))
         }else if(categoryM==="past"){
-            setpostData(
+            setpostData(  
 				content.filter((post) => {
                     return(post.done
-                        //&&(post.members.includes("A"))
-                        )
-			}))
+                    &&(post.members.some(
+                        (member) =>
+                            member.url === JSON.parse(localStorage.userNow).url
+                    )
+                    )
+                    )}))
             
         }else if(categoryM==="author"){
             setpostData(
-				content.filter((post) => {
-                    return(post.author==="A")
-			}))
+				content.filter((post) => (post.author.url===JSON.parse(localStorage.userNow).url)
+			))
 
         }
-    },[content])
+    },[content, categoryM])
     const cards = postData && postData.map((post) => (
         <Link to={{ pathname: '/Detail', post1: post }} key={post.id}>
 			<Card

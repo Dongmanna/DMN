@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import SearchHeader from "../Componenets/SearchHeader";
-import styled from "styled-components";
-import ButtonWhite from "../Componenets/ButtonWhite"
-import ButtonGray from "../Componenets/ButtonGray";
-import ButtonGreenA from "../Componenets/ButtonGreenA"
-import MemberProfile from "../Componenets/MemberProfile";
-import CommentBox from "../Componenets/CommentBox";
+import React, { useEffect, useState } from 'react';
+import SearchHeader from '../Componenets/SearchHeader';
+import styled from 'styled-components';
+import ButtonWhite from '../Componenets/ButtonWhite';
+import ButtonGray from '../Componenets/ButtonGray';
+import ButtonGreenA from '../Componenets/ButtonGreenA';
+import MemberProfile from '../Componenets/MemberProfile';
+import CommentBox from '../Componenets/CommentBox';
 // import temp_image1 from "../img/temp_image1.png"
-import avatar from "../img/avatar-pl.png"
-// import axios from 'axios';
-import { withRouter } from "react-router";
-import axios from "axios";
+import avatar from '../img/avatar-pl.png';
+import { withRouter } from 'react-router';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const DetailStyle = styled.div`
 	font-family: 'NIXGONM-Vb';
@@ -26,14 +26,14 @@ const DetailStyle = styled.div`
 	}
 	.left {
 		width: 30vw;
-        display:flex;
-        align-items: center;
+		display: flex;
+		align-items: center;
 		img {
 			border: solid 0.1rem var(--grn-1);
 			border-radius: 0.1rem;
 			max-height: 30vw;
-            width:100%;
-            height:100%;
+			width: 100%;
+			height: 100%;
 		}
 	}
 	.right {
@@ -75,6 +75,7 @@ const DetailStyle = styled.div`
 					width: 3rem;
 					height: 3rem;
 					border-radius: 40px;
+					overflow: hidden;
 					margin-right: 0.5rem;
 				}
 			}
@@ -99,7 +100,6 @@ const DetailStyle = styled.div`
 				padding-left: 3%;
 				overflow: hidden;
 				text-overflow: ellipsis;
-
 			}
 		}
 		.btntop {
@@ -113,22 +113,21 @@ const DetailStyle = styled.div`
 	.textarea {
 		width: 100%;
 		min-height: 35vh;
-        line-height:2.2rem;
+		line-height: 2.2rem;
 		box-shadow: 0 0 1px #f2f2f3;
 		padding: 2rem;
 		font-size: 1.6rem;
 		border: solid 0.3rem #f2f2f2;
 		margin-bottom: 2rem;
 	}
-	.done{
-		width:100%;
+	.done {
+		width: 100%;
 		min-height: 35vh;
-		line-height:35vh;
+		line-height: 35vh;
 
 		text-align: center;
-		font-size:3rem;
+		font-size: 3rem;
 		border: solid 0.3rem #f2f2f2;
-
 	}
 	.btnsection {
 		display: flex;
@@ -138,22 +137,23 @@ const DetailStyle = styled.div`
 		padding: 5%;
 		padding-bottom: 2%;
 		display: flex;
+		justify-content: flex-start;
 		border-bottom: solid 0.2rem;
-		margin-bottom:2rem;
+		margin-bottom: 2rem;
 	}
 	.commentsection {
-		form{
-			width:100%;
+		form {
+			width: 100%;
 			display: flex;
 			align-items: center;
-            justify-content: center;
+			justify-content: center;
 		}
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		.comment-sub {
-            width:70vw;
-			
+			width: 70vw;
+
 			textarea {
 				width: 70%;
 				height: 10vh;
@@ -189,104 +189,233 @@ const DetailStyle = styled.div`
 	}
 `;
 //member 수 6명 이상이면 flex다시 설정해야해
-const Detail = ({ location }) => {
-	const [post, setpost] = useState(
-		location.post1===undefined?JSON.parse(sessionStorage.getItem("post")):location.post1
-
-	)
+const Detail = ({ location , history}) => {
+	//렌더링
 	const [Part, setPart] = useState(false);
-	const [Author, setAuthor] = useState({});
+	
+	useEffect(() => {
+		location.postid?getPost(location.postid):getPost(JSON.parse(sessionStorage.postid));
+		getComments(post.id);
+
+	}, [Part]);
+	//states
+	const [post, setpost] = useState(
+		// location.post1===undefined?JSON.parse(sessionStorage.getItem("post")):location.post1
+		// JSON.parse(sessionStorage.getItem('posta'))
+		{
+			"url": "http://127.0.0.1:8000/api/posts/3/",
+			"id": 0,
+			"author": {
+				"url": "http://127.0.0.1:8000/api/users/1/",
+				"id": 1,
+				"email": "misby0327@gmail.com",
+				"nickname": "이",
+				"address": "마포구 공덕동",
+				"profile_image": null
+			},
+			"category": "Offline",
+			"title": "양파",
+			"pub_date": "2021-11-12T19:21:07.434249+09:00",
+			"body": "양파 같이 살 착한 사람 구해요",
+			"region": "마포구 공덕동",
+			"item": "양파",
+			"limit": 3,
+			"link": "",
+			"deadline": "2021-11-27T19:20:00+09:00",
+			"members": [
+				{
+					"url": "http://127.0.0.1:8000/api/users/1/",
+					"id": 1,
+					"email": "misby0327@gmail.com",
+					"nickname": "이",
+					"address": "마포구 공덕동",
+					"profile_image": null
+				},
+				{
+					"url": "http://127.0.0.1:8000/api/users/2/",
+					"id": 2,
+					"email": "robot0327@naver.com",
+					"nickname": "리",
+					"address": "마포구 염리동",
+					"profile_image": null
+				}
+			],
+			"image": null,
+			"done": false
+		}
+	);
 	const [Comments, setComments] = useState([]);
-	const [commentText, setcommentText] = useState("");
-    const handleCommentText = (e) => {
-        e.preventDefault();
-        setcommentText(e.target.value)
-    };
-
-
-	const authorprofile = Author.profile_image === null ? avatar : Author.profile_image;
-	//멤버 매핑
+	const [commentText, setcommentText] = useState('');
+	const handleCommentText = (e) => {
+		e.preventDefault();
+		setcommentText(e.target.value);
+	};
+	//Mapping
+		//멤버 목록
 	const members = post.members.map((member) => {
-		var isAuthor = member === post.author;
+		var isAuthor = member.url === post.author.url;
 		return (
 			<MemberProfile
-			key={member.url}
+				key={member.url}
 				img=""
 				nickname={member.nickname}
 				author={isAuthor}
 			></MemberProfile>
 		);
 	});
-	//댓글 매핑
-	// const getCommentAuthor = (authorURL)=>{
-	// 	const response = axios.get(authorURL)
-	// 	return response.data
-	// }
-	const commentBoxes = Comments.map((comment)=>{
-		
-		var a=[];
-		const authorData = getCommentAuthor(comment.author);
+		//댓글 목록
+	const commentBoxes = Comments.map((comment) => {
+		var a = [];
+		// const authorData = getCommentAuthor(comment.author);
 		return (
-			<CommentBox nickname={"nickname"} key={comment.id}>
+			<CommentBox nickname={comment.author.nickname} key={comment.id}>
 				{comment.content}
 			</CommentBox>
 		);
+	});
 
-	})
-	//댓글 작성자 정보 가져오기
-	async function getCommentAuthor(authorURL) {
+	//Functions
+		//참가하기
+	async function join(id) {
 		try {
-			var response = await axios.get(authorURL)
-			
-			return response.data;
+			const token = 'Token ' + localStorage.getItem('user_token');
+			const response = await axios.post(
+				`http://127.0.0.1:8000/api/posts/` + id + `/join/`,
+				{
+					_content: '',
+					_content_type: 'application/json',
+				},
+				{
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+						Authorization: token,
+					},
+				}
+			);
 		} catch (error) {
 			console.error(error);
 		}
-	}
-	
+	}	
+		//삭제하기
+	async function deletePost() {
+		const token = 'Token ' + localStorage.getItem('user_token');
 
-	//작성자 정보 가져오기
-	async function getAuthor(authorURL) {
-		try {
-			const response = await axios.get(authorURL);
-			await setAuthor(response.data);
-		} catch (error) {
-			console.error(error);
-		}
+		await axios.delete(
+			'http://127.0.0.1:8000/api/posts/'+ post.id + "/",
+			{
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+					Authorization: token,
+				},
+			}
+		);
+		//삭제가 완료되었습니다 팝업창
+		await history.push("/")
 	}
-	//댓글 리스트 가져오기
+		//댓글 리스트 가져오기
 	async function getComments(id) {
 		try {
+			const token = 'Token ' + localStorage.getItem('user_token');
 			const response = await axios.get(
-				`http://127.0.0.1:8000/posts/`+id+`/comments/`
+				`http://127.0.0.1:8000/api/posts/` + id + `/comments/`,
+				{
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+						Authorization: token,
+					},
+				}
 			);
 			await setComments(response.data);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+		//구매완료
+	async function doneRegister(id) {
+		try {
+			const token = 'Token ' + localStorage.getItem('user_token');
+			const response = await axios.post(
+				`http://127.0.0.1:8000/api/posts/` + id + `/doneregister/`,
+				{
+				},
+				{
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+						Authorization: token,
+					},
+				}
+			);
+		console.log("done");
+		} catch (error) {
+			console.error(error);
+		}
+	}	
+		//댓글 입력
+	async function commentSubmit() {
+		const token = 'Token ' + localStorage.getItem('user_token');
 
+		await axios.post(
+			'http://127.0.0.1:8000/api/comments/',
+			{
+				post:post.url,
+				author:JSON.parse(localStorage.userNow),
+				content: commentText,
+			},
+			{
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+					Authorization: token,
+				},
+			}
+		);
+	}
+		//Get post by id & session storage
+	async function getPost(postid) {
+		try {
+			const token = 'Token ' + localStorage.getItem('user_token');
+			const response = await axios.get(
+				`http://127.0.0.1:8000/api/posts/` + postid,
+				{
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+						Authorization: token,
+					},
+				}
+			);
+			await setpost(response.data);
+			await sessionStorage.setItem('postid', postid);
+			await sessionStorage.setItem(
+				'posta',
+				JSON.stringify(response.data)
+			);
+
+			if (
+				response.data.members.some(
+					(member) =>
+						member.url === JSON.parse(localStorage.userNow).url
+				)
+			) {
+				setPart(true);
+			}
 		} catch (error) {
 			console.error(error);
 		}
 	}
 	
-
-	//렌더링
-	useEffect(() => {
-		const authorURL = post.author;
-		if(!(location.post1===undefined)){
-			sessionStorage.setItem("post", JSON.stringify(location.post1));
-		}
-
-		setpost(
-			location.post1===undefined?JSON.parse(sessionStorage.getItem("post")):location.post1
-		)
-		
-		getAuthor(authorURL);
-		getComments(post.id);
-
-	}, []);
+		//수정하기
+	const edit = ()=>{
+		history.push("/edit")
+	}
 
 	return (
 		<DetailStyle>
-			<SearchHeader />
+			{/* <SearchHeader /> */}
 			<div className="body">
 				<div className="top">
 					<div className="left">
@@ -300,15 +429,20 @@ const Detail = ({ location }) => {
 								<div className="date">{post.pub_date}</div>
 							</div>
 							<div className="author">
-								<img
-									src={authorprofile}
-									alt="작성자"
-									className="author-profile-img"
-								/>
+								{post.author.image ? (
+									<img
+										src={""}
+										alt="작성자"
+										className="author-profile-img"
+									/>
+								) : (
+									<img src={avatar} alt="작성자"></img>
+								)}
+
 								<div className="author-profile">
-									{Author.nickname}
+									{post.author.nickname}
 									<br /> {/*author 어떻게 만지는지 확인 */}
-									{Author.address}
+									{post.author.address}
 								</div>
 							</div>
 						</div>
@@ -333,14 +467,20 @@ const Detail = ({ location }) => {
 						<div className="btntop">
 							<ButtonGreenA
 								function1={setPart}
+								join={join}
 								part={Part}
+								id={post.id}
 								function2={'채팅방 입장'}
 								secondText="채팅방 입장!"
 							>
 								참가하기!
 							</ButtonGreenA>
 							{Part ? (
-								<ButtonGray setPart={setPart}>
+								<ButtonGray
+									setPart={setPart}
+									function1={join}
+									id={post.id}
+								>
 									참가 취소
 								</ButtonGray>
 							) : (
@@ -349,28 +489,43 @@ const Detail = ({ location }) => {
 						</div>
 					</div>
 				</div>
-				{post.done?<div className="done">거래가 완료되었습니다.</div>:<div className="textarea">{post.body} </div>}
+				{post.done ? (
+					<div className="done">거래가 완료되었습니다.</div>
+				) : (
+					<div className="textarea">{post.body} </div>
+				)}
 				<div className="btnsection">
-					<ButtonWhite>구매완료</ButtonWhite>
-					<ButtonWhite>수정하기</ButtonWhite>
-					<ButtonWhite>삭제하기</ButtonWhite>
+					<ButtonWhite function1 = {()=>doneRegister(post.id)}>구매완료</ButtonWhite>
+					{post.author.url ===
+					JSON.parse(localStorage.userNow).url ? (
+						<>
+							<Link to={{ pathname: '/Edit', postid: post.id }}><ButtonWhite >수정하기</ButtonWhite></Link>
+							<ButtonWhite function1 = {deletePost}>삭제하기</ButtonWhite>
+						</>
+					) : (
+						''
+					)}
 				</div>
 				<div className="membersection">{members}</div>
-				<div className="commentsection">
+				{Part?<div className="commentsection">
 					{commentBoxes}
 					<div className="comment-sub">
-						<form>
-						<textarea
-							name="comment"
-							id=""
-							cols="30"
-							rows="10"
-							placeholder="댓글 입력하기"
-							onChange={handleCommentText}
-						></textarea>
-						<ButtonWhite>입력</ButtonWhite></form>
+						<form >
+							<textarea
+								name="comment"
+								id=""
+								cols="30"
+								rows="10"
+								placeholder="댓글 입력하기"
+								onChange={handleCommentText}
+							></textarea>
+							<ButtonWhite  function1={commentSubmit}>
+								입력
+							</ButtonWhite>
+						</form>
 					</div>
-				</div>
+				</div>:""}
+				
 			</div>
 		</DetailStyle>
 	);
